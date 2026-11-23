@@ -40,6 +40,9 @@
   --accent-soft: #eaf4ff;
   --pink: #fa2c5d;          /* Chaotic Era magenta (media kit), Republican marks */
   --mark: var(--accent);
+  --cta-bg: #02101f;        /* Chaotic Era navy, as on the other dashboards */
+  --cta-ink: #ffffff;
+  --cta-border: transparent;
   --on-accent: #ffffff;
   --gold: #d9a441;
   --flag-bg: #fff8e8;
@@ -59,6 +62,7 @@
     --paper: #0f141b; --paper-card: #161d26; --paper-tint: #1b2430; --row-hover: #1c2633;
     --line: #253041; --line-strong: #33415a;
     --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
+    --cta-bg: #1a2a3f; --cta-ink: #ffffff; --cta-border: #2c3e57;
     --flag-bg: #2a2314; --flag-ink: #f0d08e;
     --up: #3fc495; --down: #f08a5d;
     --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -71,6 +75,7 @@
   --paper: #0f141b; --paper-card: #161d26; --paper-tint: #1b2430; --row-hover: #1c2633;
   --line: #253041; --line-strong: #33415a;
   --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
+    --cta-bg: #1a2a3f; --cta-ink: #ffffff; --cta-border: #2c3e57;
   --flag-bg: #2a2314; --flag-ink: #f0d08e;
   --up: #3fc495; --down: #f08a5d;
   --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -107,6 +112,17 @@ a { color: inherit; }
 .subscribe-btn:hover { background: var(--accent-dark); }
 
 main.wrap { padding-block: 0 64px; }
+.cta {
+  background: var(--cta-bg); color: var(--cta-ink); border: 1px solid var(--cta-border);
+  border-radius: 14px; padding: 20px 26px; margin: 0 0 30px; font-size: 1.02rem; line-height: 1.5;
+  box-shadow: var(--shadow);
+}
+.cta p { margin: 0; }
+.cta b { font-weight: 700; }
+.cta a { color: var(--cta-ink); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.cta a:hover { text-decoration-thickness: 2px; }
+.cta a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (max-width: 560px) { .cta { padding: 16px 18px; font-size: 0.95rem; } .cta a { white-space: normal; } }
 .party { display: flex; gap: 0; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
 .party-btn {
   border: 0; background: transparent; cursor: pointer; font-family: var(--serif); font-weight: 700;
@@ -307,6 +323,11 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <p class="asof" id="asof"></p>
   </section>
 
+
+  <aside class="cta" aria-label="Subscribe">
+    <p>Join <b>16,000+</b> political and media insiders for data-driven insights you can’t get anywhere else.
+      <a href="https://chaoticera.news/subscribe" target="_blank" rel="noopener">Subscribe to Chaotic Era here&nbsp;»</a></p>
+  </aside>
 
   <div class="party" id="party" role="group" aria-label="Party"></div>
 
