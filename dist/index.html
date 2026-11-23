@@ -392,7 +392,10 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
   const platformsFor = pt => DATA.platforms.filter(p => !p.parties || p.parties.includes(pt));
   const ALL = DATA.candidates;                    // [{id,name,role,party,accounts:{x:{handle,url,status}}}]
   const PARTIES = [{ id: "D", label: "Democrats", hash: "democrats" }, { id: "R", label: "Republicans", hash: "republicans" }];
-  const partyFromHash = () => (PARTIES.find(p => "#" + p.hash === location.hash) || PARTIES[0]).id;
+  // Embed options (used by the iframes in the paywalled beehiiv post), e.g. ?party=R&solo=1&methods=0
+  const QS = new URLSearchParams(location.search);
+  const QS_PARTY = PARTIES.find(p => p.id === (QS.get("party") || "").toUpperCase());
+  const partyFromHash = () => (QS_PARTY || PARTIES.find(p => "#" + p.hash === location.hash) || PARTIES[0]).id;
   let party = partyFromHash();
   let CANDS = ALL.filter(c => (c.party || "D") === party);
   let PLATFORMS = platformsFor(party);
@@ -709,6 +712,10 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
   document.getElementById("footnote").textContent =
     `Latest counts collected ${fmtDate(latest.date)}. Per-account sources are recorded in data/followers.csv.`;
 
+  if (QS.has("solo")) document.getElementById("party").hidden = true;      // one party only, no switch
+  if (QS.get("methods") === "0") {                                         // keep only this party's account notes
+    document.querySelectorAll(".methodology > h2, .methodology > ul, .methodology > .footnote").forEach(el => { el.hidden = true; });
+  }
   renderAll();
 })();
 </script>

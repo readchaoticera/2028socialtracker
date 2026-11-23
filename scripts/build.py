@@ -8,6 +8,7 @@ from collections import OrderedDict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+EMBED_PATH = "embed-k7q2m9"  # docs/<EMBED_PATH>/ is the iframe source for the paywalled beehiiv post
 
 
 def load():
@@ -70,6 +71,18 @@ def main():
     pages.parent.mkdir(exist_ok=True)
     pages.write_text(head + html + "\n</body>\n</html>\n")
     (ROOT / "docs/.nojekyll").write_text("")
+
+    # Embed version for an iframe inside a paywalled beehiiv post: no masthead, subscribe bar or footer
+    # (the post supplies those), not indexed by search engines, at a hard-to-guess path.
+    import re as _re
+    emb = html
+    for pat in (r'<header class="masthead">.*?</header>', r'<aside class="cta".*?</aside>', r'<footer class="site-footer">.*?</footer>'):
+        emb, n = _re.subn(pat, "", emb, count=1, flags=_re.S)
+        assert n == 1, f"embed build: pattern not found: {pat}"
+    emb_head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
+    emb_dir = ROOT / f"docs/{EMBED_PATH}"
+    emb_dir.mkdir(parents=True, exist_ok=True)
+    (emb_dir / "index.html").write_text(emb_head + emb + "\n</body>\n</html>\n")
     latest = data["snapshots"][-1]
     print(f"Built {out.relative_to(ROOT)}: {len(data['snapshots'])} snapshot(s), latest {latest['date']}, "
           f"{len(data['candidates'])} candidates x {len(data['platforms'])} platforms")

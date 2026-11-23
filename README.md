@@ -66,3 +66,14 @@ credits left. A normal week uses about 25–30 credits.
 `docs/index.html` is a complete standalone copy of the dashboard. In the repository's
 Settings → Pages, set Source to "Deploy from a branch" and choose this branch with the `/docs` folder.
 Each weekly run rebuilds and commits it, so the site updates itself every Monday.
+
+## Paywalled beehiiv post
+
+`docs/embed-k7q2m9/` is an embed version (no masthead, subscribe bar or footer; not indexed) used by two
+iframes in a beehiiv post whose Web Audience is set to paid subscribers:
+
+- Democrats: `https://readchaoticera.github.io/2028socialtracker/embed-k7q2m9/?party=D&solo=1&methods=0`
+- Republicans (with "How this is counted"): `https://readchaoticera.github.io/2028socialtracker/embed-k7q2m9/?party=R&solo=1`
+
+Options: `party=D|R` picks the side, `solo=1` hides the party switch, `methods=0` hides the methodology list.
+It rebuilds every Monday with the rest of the site, so the post stays current without edits.
