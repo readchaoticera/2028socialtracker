@@ -42,7 +42,8 @@
         "instagram": {
           "handle": "@kamalaharris",
           "url": "https://www.instagram.com/kamalaharris/"
-        }
+        },
+        "youtube": {}
       }
     },
     {
@@ -65,7 +66,8 @@
         "instagram": {
           "handle": "@aoc",
           "url": "https://www.instagram.com/aoc/"
-        }
+        },
+        "youtube": {}
       }
     },
     {
@@ -88,7 +90,8 @@
         "instagram": {
           "handle": "@gavinnewsom",
           "url": "https://www.instagram.com/gavinnewsom/"
-        }
+        },
+        "youtube": {}
       }
     },
     {
@@ -111,13 +114,184 @@
         "instagram": {
           "handle": "@jonossoff",
           "url": "https://www.instagram.com/jonossoff/"
-        }
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "warnock",
+      "name": "Raphael Warnock",
+      "role": "U.S. Senator, Georgia",
+      "accounts": {
+        "x": {
+          "handle": "@ReverendWarnock",
+          "url": "https://x.com/ReverendWarnock"
+        },
+        "tiktok": {
+          "handle": "@raphaelwarnock",
+          "url": "https://www.tiktok.com/@raphaelwarnock"
+        },
+        "facebook": {
+          "handle": "reverendwarnock",
+          "url": "https://www.facebook.com/reverendwarnock/"
+        },
+        "instagram": {
+          "handle": "@raphaelwarnock",
+          "url": "https://www.instagram.com/raphaelwarnock/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "kelly",
+      "name": "Mark Kelly",
+      "role": "U.S. Senator, Arizona",
+      "accounts": {
+        "x": {
+          "handle": "@CaptMarkKelly",
+          "url": "https://x.com/CaptMarkKelly"
+        },
+        "tiktok": {
+          "handle": "@captmarkkelly",
+          "url": "https://www.tiktok.com/@captmarkkelly"
+        },
+        "facebook": {
+          "handle": "CaptMarkKelly",
+          "url": "https://www.facebook.com/CaptMarkKelly/"
+        },
+        "instagram": {
+          "handle": "@captmarkkelly",
+          "url": "https://www.instagram.com/captmarkkelly/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "buttigieg",
+      "name": "Pete Buttigieg",
+      "role": "Former Transportation Secretary",
+      "accounts": {
+        "x": {
+          "handle": "@PeteButtigieg",
+          "url": "https://x.com/PeteButtigieg"
+        },
+        "tiktok": {
+          "handle": "@petebuttigieg",
+          "url": "https://www.tiktok.com/@petebuttigieg"
+        },
+        "facebook": {
+          "handle": "petebuttigieg",
+          "url": "https://www.facebook.com/petebuttigieg/"
+        },
+        "instagram": {
+          "handle": "@pete.buttigieg",
+          "url": "https://www.instagram.com/pete.buttigieg/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "shapiro",
+      "name": "Josh Shapiro",
+      "role": "Governor of Pennsylvania",
+      "accounts": {
+        "x": {
+          "handle": "@JoshShapiroPA",
+          "url": "https://x.com/JoshShapiroPA"
+        },
+        "tiktok": {
+          "handle": "@joshshapiropa",
+          "url": "https://www.tiktok.com/@joshshapiropa"
+        },
+        "facebook": {
+          "handle": "JoshShapiroPA",
+          "url": "https://www.facebook.com/JoshShapiroPA/"
+        },
+        "instagram": {
+          "handle": "@joshshapiropa",
+          "url": "https://www.instagram.com/joshshapiropa/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "pritzker",
+      "name": "JB Pritzker",
+      "role": "Governor of Illinois",
+      "accounts": {
+        "x": {
+          "handle": "@JBPritzker",
+          "url": "https://x.com/JBPritzker"
+        },
+        "tiktok": {
+          "handle": "@jbpritzker",
+          "url": "https://www.tiktok.com/@jbpritzker"
+        },
+        "facebook": {
+          "handle": "jbpritzker",
+          "url": "https://www.facebook.com/jbpritzker/"
+        },
+        "instagram": {
+          "handle": "@jbpritzker",
+          "url": "https://www.instagram.com/jbpritzker/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "slotkin",
+      "name": "Elissa Slotkin",
+      "role": "U.S. Senator, Michigan",
+      "accounts": {
+        "x": {
+          "handle": "@ElissaSlotkin",
+          "url": "https://x.com/ElissaSlotkin"
+        },
+        "tiktok": {
+          "status": "none"
+        },
+        "facebook": {
+          "handle": "elissaslotkin",
+          "url": "https://www.facebook.com/elissaslotkin/"
+        },
+        "instagram": {
+          "handle": "@elissa.slotkin",
+          "url": "https://www.instagram.com/elissa.slotkin/"
+        },
+        "youtube": {}
+      }
+    },
+    {
+      "id": "emanuel",
+      "name": "Rahm Emanuel",
+      "role": "Former Ambassador to Japan",
+      "accounts": {
+        "x": {
+          "handle": "@RahmEmanuel",
+          "url": "https://x.com/RahmEmanuel"
+        },
+        "tiktok": {
+          "status": "none"
+        },
+        "facebook": {
+          "handle": "rahmemanuel",
+          "url": "https://www.facebook.com/rahmemanuel/"
+        },
+        "instagram": {
+          "handle": "@rahmemanuel",
+          "url": "https://www.instagram.com/rahmemanuel/"
+        },
+        "youtube": {}
       }
     }
   ],
   "notes": [
     "Ocasio-Cortez: office accounts (@RepAOC on X and Instagram) and a second TikTok, @aocinthehouse, are not counted.",
     "Newsom: @GovPressOffice and @CAgovernor on X are not counted.",
-    "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted."
+    "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted.",
+    "Warnock: the verified TikTok @raphaelwarnock matches his Instagram handle but is not linked from any official site. Office accounts (@SenatorWarnock) are not counted.",
+    "Kelly: office accounts (@SenMarkKelly) are not counted.",
+    "Shapiro, Pritzker and Slotkin: their governor’s or Senate office accounts are larger on several platforms (for example @GovernorShapiro and @GovPritzker on X) and are not counted.",
+    "Emanuel and Slotkin have no TikTok account."
   ]
 }

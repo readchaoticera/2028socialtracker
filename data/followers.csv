@@ -15,3 +15,29 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,ossoff,tiktok,1088420,false,2026-11-23,https://www.tiktok.com/@jon,
 2026-11-23,ossoff,facebook,1252871,false,,https://www.facebook.com/jonossoff/,Undated search-engine cache; Facebook requires login
 2026-11-23,ossoff,instagram,1584346,false,2026-11-11,https://instastatistics.com/jonossoff,
+2026-11-23,warnock,facebook,283046,false,,https://www.facebook.com/reverendwarnock/,Undated search snippet; Facebook requires login
+2026-11-23,warnock,instagram,371000,true,,https://www.instagram.com/raphaelwarnock/,Search snippet likely years old; Instagram blocks logged-out reads
+2026-11-23,kelly,facebook,757366,false,,https://www.facebook.com/CaptMarkKelly/,Undated search snippet; Facebook requires login
+2026-11-23,kelly,instagram,835000,true,2026-11-23,https://www.instagram.com/captmarkkelly/,
+2026-11-23,buttigieg,facebook,1200000,true,,https://www.facebook.com/petebuttigieg/,Search snippet likely from 2023; Facebook requires login
+2026-11-23,buttigieg,instagram,1300000,true,,https://www.instagram.com/pete.buttigieg/,Undated search snippet
+2026-11-23,shapiro,facebook,246969,false,,https://www.facebook.com/JoshShapiroPA/,Search snippet likely from mid-2024; Facebook requires login
+2026-11-23,shapiro,instagram,198000,true,2026-11-23,https://www.instagram.com/joshshapiropa/,
+2026-11-23,pritzker,facebook,497136,false,,https://www.facebook.com/jbpritzker/,Undated search snippet; Facebook requires login
+2026-11-23,pritzker,instagram,324000,true,,https://www.instagram.com/jbpritzker/,Undated search snippet
+2026-11-23,slotkin,facebook,205888,false,,https://www.facebook.com/elissaslotkin/,Undated search snippet; Facebook requires login
+2026-11-23,slotkin,instagram,140000,true,,https://www.instagram.com/elissa.slotkin/,Search snippet about two years old
+2026-11-23,emanuel,facebook,99000,true,,https://www.facebook.com/rahmemanuel/,Undated search snippet; Facebook requires login
+2026-11-23,emanuel,instagram,32000,true,,https://www.instagram.com/rahmemanuel/,Undated search snippet
+2026-11-23,warnock,x,1206779,false,2026-11-23,https://api.fxtwitter.com/ReverendWarnock,
+2026-11-23,warnock,tiktok,20278,false,2026-11-23,https://www.tiktok.com/@raphaelwarnock,
+2026-11-23,kelly,x,527275,false,2026-11-23,https://api.fxtwitter.com/CaptMarkKelly,
+2026-11-23,kelly,tiktok,467682,false,2026-11-23,https://www.tiktok.com/@captmarkkelly,
+2026-11-23,buttigieg,x,3752943,false,2026-11-23,https://api.fxtwitter.com/PeteButtigieg,
+2026-11-23,buttigieg,tiktok,1472238,false,2026-11-23,https://www.tiktok.com/@petebuttigieg,
+2026-11-23,shapiro,x,315620,false,2026-11-23,https://api.fxtwitter.com/JoshShapiroPA,
+2026-11-23,shapiro,tiktok,105346,false,2026-11-23,https://www.tiktok.com/@joshshapiropa,
+2026-11-23,pritzker,x,208949,false,2026-11-23,https://api.fxtwitter.com/JBPritzker,
+2026-11-23,pritzker,tiktok,37358,false,2026-11-23,https://www.tiktok.com/@jbpritzker,
+2026-11-23,slotkin,x,76893,false,2026-11-23,https://api.fxtwitter.com/ElissaSlotkin,
+2026-11-23,emanuel,x,212219,false,2026-11-23,https://api.fxtwitter.com/RahmEmanuel,

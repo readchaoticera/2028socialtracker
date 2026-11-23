@@ -122,6 +122,8 @@ def main():
             acct = c["accounts"].get(p["id"], {})
             if acct.get("status") == "none" or key in have:
                 continue
+            if not acct.get("handle") and key not in manual:
+                continue  # account not identified yet
             row = {"snapshot": a.date, "candidate": c["id"], "platform": p["id"], "approximate": "false", "note": ""}
             if key in manual:
                 n, d = manual[key]
