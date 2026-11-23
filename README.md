@@ -13,6 +13,7 @@ Live dashboard (Artifact): https://claude.ai/artifact/2fFdChcBnZH9bSjYkD2EzD
 | `data/followers.csv` | Every weekly count, one row per person × platform × snapshot, with its source |
 | `src/template.html` | The dashboard page (styles + script); data is injected at build time |
 | `scripts/fetch_counts.py` | Fetches this week's counts and appends a snapshot to the CSV |
+| `scripts/fetch_avatars.py` | Downloads each person's X profile picture into `assets/avatars/` as a face-centred 96px thumbnail (run when adding someone) |
 | `scripts/build.py` | Builds `dist/index.html` (published as the Artifact) and `docs/index.html` (served by GitHub Pages) |
 
 ## Weekly update
@@ -40,6 +41,8 @@ python3 scripts/fetch_counts.py --set aoc.facebook=2310000 --set newsom.facebook
 Add an entry to `data/candidates.json` with their handle on each platform, then run
 `python3 scripts/fetch_counts.py --date <latest snapshot date> --fill` to backfill them. Use `"status": "none"` for a platform where they have no account.
 
+
+For their profile picture on the ranking chart, run `python3 scripts/fetch_avatars.py <id>` (needs `pip install "opencv-python-headless<5"` for face cropping; `data/avatar_crops.json` holds manual crops).
 
 ## Sources
 

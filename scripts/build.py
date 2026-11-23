@@ -39,6 +39,10 @@ def load():
 
 def main():
     data = load()
+    for c in data["candidates"]:  # embed profile pictures so the page makes no external image requests
+        pic = ROOT / f"assets/avatars/{c['id']}.jpg"
+        if pic.exists():
+            c["avatar"] = "data:image/jpeg;base64," + base64.b64encode(pic.read_bytes()).decode()
     html = (ROOT / "src/template.html").read_text()
     logo = "data:image/png;base64," + base64.b64encode((ROOT / "assets/chaotic-era-logo.png").read_bytes()).decode()
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

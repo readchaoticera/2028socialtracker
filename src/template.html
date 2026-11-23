@@ -162,13 +162,22 @@ main[data-party="R"] .party-btn[aria-pressed="true"] { border-bottom-color: var(
 
 /* ranking bars */
 .bars { display: flex; flex-direction: column; gap: 10px; padding-top: 6px; }
-.bar-rank { color: var(--ink-faint); font-weight: 600; display: inline-block; min-width: 1.6em; font-variant-numeric: tabular-nums; }
-.bar-name small { padding-left: 1.6em; }
+.bar-rank { color: var(--ink-faint); font-weight: 600; font-variant-numeric: tabular-nums; }
+.bar-name { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.bar-name .bar-rank { min-width: 1.3em; text-align: right; flex: none; }
+.bar-name .who { min-width: 0; }
+.avatar {
+  width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex: none; display: block;
+  background: var(--paper-tint); box-shadow: 0 0 0 2px var(--paper-card), 0 0 0 3px var(--line-strong);
+}
+main[data-party="R"] .avatar { box-shadow: 0 0 0 2px var(--paper-card), 0 0 0 3px color-mix(in srgb, var(--pink) 45%, var(--line-strong)); }
+main[data-party="D"] .avatar { box-shadow: 0 0 0 2px var(--paper-card), 0 0 0 3px color-mix(in srgb, var(--accent) 45%, var(--line-strong)); }
+.avatar-ini { display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; color: var(--ink-soft); }
 .profile-link { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
 .profile-link:hover { color: var(--accent-dark); text-decoration-color: currentColor; }
 .profile-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 .profile-link .ext { font-size: 0.72em; margin-left: 3px; color: var(--ink-faint); }
-.bar-row { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 4px 12px; align-items: center; position: relative; }
+.bar-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 4px 12px; align-items: center; position: relative; }
 .bar-name { font-size: 0.86rem; font-weight: 600; line-height: 1.25; }
 .bar-name small { display: block; font-weight: 500; color: var(--ink-soft); font-size: 0.74rem; }
 .bar-track { display: flex; align-items: center; gap: 8px; min-width: 0; }
@@ -440,6 +449,12 @@ const DATA = /*__DATA__*/null;
   }
 
   // ---------- ranking bars ----------
+  // Round profile picture (the person's X avatar, embedded at build time); initials if missing.
+  function avatar(c) {
+    if (c.avatar) return `<img class="avatar" src="${c.avatar}" alt="" width="36" height="36" loading="lazy">`;
+    const ini = c.name.split(" ").filter(Boolean).map(w => w[0]).filter(ch => /[A-Z]/.test(ch)).slice(0, 2).join("");
+    return `<span class="avatar avatar-ini" aria-hidden="true">${esc(ini)}</span>`;
+  }
   // On a single-platform tab, each name links to the profile whose count is shown.
   function nameLink(c) {
     const acct = platform === "all" ? null : c.accounts[platform];
@@ -472,7 +487,7 @@ const DATA = /*__DATA__*/null;
         barHtml = `<span class="bar" style="width:calc(${w}% - ${w > 70 ? 80 : 0}px)" title="${fmtFull(r.v)}">${segs}</span>
           <span class="bar-val">${approx(latest, r.c.id, platform) ? '<span class="approx">≈</span>' : ""}${fmtShort(r.v)}${r.d != null ? `<span class="d ${dcls(r.d)}">${fmtDelta(r.d, true)}</span>` : ""}</span>`;
       }
-      return `<div class="bar-row"><div class="bar-name"><span class="bar-rank">${r.v != null ? k + 1 : ""}</span>${nameLink(r.c)}<small>${esc(r.c.role)}</small></div><div class="bar-track">${barHtml}</div></div>`;
+      return `<div class="bar-row"><div class="bar-name"><span class="bar-rank">${r.v != null ? k + 1 : ""}</span>${avatar(r.c)}<span class="who">${nameLink(r.c)}<small>${esc(r.c.role)}</small></span></div><div class="bar-track">${barHtml}</div></div>`;
     }).join("");
     const ml = document.getElementById("mix-legend");
     if (platform === "all") {

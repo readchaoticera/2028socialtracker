@@ -1,0 +1,6 @@
+{
+  "_about": "Manual crops for profile pictures where face detection picks the wrong face or none: [centre x, centre y, square size], as fractions of the original image.",
+  "rubio": [0.385, 0.10, 0.22],
+  "emanuel": [0.38, 0.25, 0.45],
+  "moore": [0.24, 0.27, 0.5]
+}
