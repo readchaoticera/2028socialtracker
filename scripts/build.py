@@ -46,7 +46,26 @@ def main():
     html = html.replace("/*__DATA__*/null", payload).replace("__LOGO__", logo)
     out = ROOT / "dist/index.html"
     out.parent.mkdir(exist_ok=True)
-    out.write_text(html)
+    out.write_text(html)  # Artifact version: the Artifact host adds the document skeleton
+
+    # GitHub Pages version: a complete standalone document in docs/
+    desc = ("Weekly follower counts on X, TikTok, Facebook, Instagram and YouTube for the likely "
+            "2028 Democratic and Republican presidential contenders. From Chaotic Era.")
+    head = (
+        '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+        f'<meta name="description" content="{desc}">\n'
+        '<meta property="og:type" content="website">\n'
+        '<meta property="og:title" content="2028 Social Tracker · Chaotic Era">\n'
+        f'<meta property="og:description" content="{desc}">\n'
+        '<meta name="twitter:card" content="summary">\n'
+        '<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n'
+        '</head>\n<body>\n'
+    )
+    pages = ROOT / "docs/index.html"
+    pages.parent.mkdir(exist_ok=True)
+    pages.write_text(head + html + "\n</body>\n</html>\n")
+    (ROOT / "docs/.nojekyll").write_text("")
     latest = data["snapshots"][-1]
     print(f"Built {out.relative_to(ROOT)}: {len(data['snapshots'])} snapshot(s), latest {latest['date']}, "
           f"{len(data['candidates'])} candidates x {len(data['platforms'])} platforms")

@@ -13,7 +13,7 @@ Live dashboard (Artifact): https://claude.ai/artifact/2fFdChcBnZH9bSjYkD2EzD
 | `data/followers.csv` | Every weekly count, one row per person × platform × snapshot, with its source |
 | `src/template.html` | The dashboard page (styles + script); data is injected at build time |
 | `scripts/fetch_counts.py` | Fetches this week's counts and appends a snapshot to the CSV |
-| `scripts/build.py` | Builds `dist/index.html`, the single file published as the Artifact |
+| `scripts/build.py` | Builds `dist/index.html` (published as the Artifact) and `docs/index.html` (served by GitHub Pages) |
 
 ## Weekly update
 
@@ -55,3 +55,9 @@ A scheduled Claude task runs every Monday at 7:40am Eastern on the `2028socialtr
 It runs `fetch_counts.py` and `build.py`, commits, pushes, and republishes the Artifact, then sends a push
 notification with the top five, the biggest weekly gains, anything it could not refresh, and Social Blade
 credits left. A normal week uses about 25–30 credits.
+
+## GitHub Pages
+
+`docs/index.html` is a complete standalone copy of the dashboard. In the repository's
+Settings → Pages, set Source to "Deploy from a branch" and choose this branch with the `/docs` folder.
+Each weekly run rebuilds and commits it, so the site updates itself every Monday.
