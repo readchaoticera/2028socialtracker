@@ -25,6 +25,8 @@
   --accent: #419eff;
   --accent-dark: #2486ec;
   --accent-soft: #eaf4ff;
+  --pink: #fa2c5d;          /* Chaotic Era magenta (media kit), Republican marks */
+  --mark: var(--accent);
   --on-accent: #ffffff;
   --gold: #d9a441;
   --flag-bg: #fff8e8;
@@ -43,7 +45,7 @@
     --ink: #e8edf3; --ink-soft: #a3aebb; --ink-faint: #7b8794;
     --paper: #0f141b; --paper-card: #161d26; --paper-tint: #1b2430; --row-hover: #1c2633;
     --line: #253041; --line-strong: #33415a;
-    --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320;
+    --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
     --flag-bg: #2a2314; --flag-ink: #f0d08e;
     --up: #3fc495; --down: #f08a5d;
     --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -55,7 +57,7 @@
   --ink: #e8edf3; --ink-soft: #a3aebb; --ink-faint: #7b8794;
   --paper: #0f141b; --paper-card: #161d26; --paper-tint: #1b2430; --row-hover: #1c2633;
   --line: #253041; --line-strong: #33415a;
-  --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320;
+  --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
   --flag-bg: #2a2314; --flag-ink: #f0d08e;
   --up: #3fc495; --down: #f08a5d;
   --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -102,6 +104,8 @@ main.wrap { padding-block: 0 64px; }
 .party-btn[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
 .party-btn .ct { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; color: var(--ink-soft); }
 .party-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+main[data-party="R"] { --mark: var(--pink); }
+main[data-party="R"] .party-btn[aria-pressed="true"] { border-bottom-color: var(--pink); }
 .party + .controls { border-top: 0; padding-top: 0; }
 
 /* ---------- Hero ---------- */
@@ -143,10 +147,10 @@ main.wrap { padding-block: 0 64px; }
   font: 500 0.78rem var(--sans); padding: 4px 10px; border-radius: 999px; cursor: pointer;
 }
 .chip:hover { color: var(--ink); border-color: var(--accent); }
-.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.chip[aria-pressed="true"] { background: var(--mark); border-color: var(--mark); color: var(--on-accent); }
 .chip:focus-visible, .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .chart .line-bg { stroke: var(--line-strong); }
-.chart .line-hi { stroke: var(--accent); }
+.chart .line-hi { stroke: var(--mark); }
 .panel {
   background: var(--paper-card); border: 1px solid var(--line); border-radius: 12px;
   box-shadow: var(--shadow); padding: 18px 20px 16px; min-width: 0; display: flex; flex-direction: column; gap: 6px;
@@ -462,9 +466,9 @@ const DATA = /*__DATA__*/null;
           segs = PLATFORMS.map((p, i) => {
             const v = val(latest, r.c.id, p.id) || 0;
             if (!v) return "";
-            return `<span class="bar-seg" title="${esc(p.label)}: ${fmtFull(v)}" style="width:${(v / r.v) * 100}%;background:var(--accent);opacity:${mixOpacity[i] ?? 0.3}"></span>`;
+            return `<span class="bar-seg" title="${esc(p.label)}: ${fmtFull(v)}" style="width:${(v / r.v) * 100}%;background:var(--mark);opacity:${mixOpacity[i] ?? 0.3}"></span>`;
           }).join("");
-        } else segs = `<span class="bar-seg" style="width:100%;background:var(--accent)"></span>`;
+        } else segs = `<span class="bar-seg" style="width:100%;background:var(--mark)"></span>`;
         barHtml = `<span class="bar" style="width:calc(${w}% - ${w > 70 ? 80 : 0}px)" title="${fmtFull(r.v)}">${segs}</span>
           <span class="bar-val">${approx(latest, r.c.id, platform) ? '<span class="approx">≈</span>' : ""}${fmtShort(r.v)}${r.d != null ? `<span class="d ${dcls(r.d)}">${fmtDelta(r.d, true)}</span>` : ""}</span>`;
       }
@@ -555,7 +559,7 @@ const DATA = /*__DATA__*/null;
         svg += `<path class="${on ? "line-hi" : "line-bg"}" d="${d}" fill="none" stroke-width="${on ? 2.5 : 1.5}" stroke-linejoin="round" stroke-linecap="round"/>`;
       }
       const e = s.pts[s.pts.length - 1];
-      svg += `<circle cx="${x(e.i)}" cy="${y(e.v)}" r="${on ? 5 : 3}" fill="${on ? "var(--accent)" : "var(--line-strong)"}" stroke="var(--paper-card)" stroke-width="${on ? 2 : 1}"/>`;
+      svg += `<circle cx="${x(e.i)}" cy="${y(e.v)}" r="${on ? 5 : 3}" fill="${on ? "var(--mark)" : "var(--line-strong)"}" stroke="var(--paper-card)" stroke-width="${on ? 2 : 1}"/>`;
     }
     const f = series.find(s => s.c.id === focus);
     if (f) {
@@ -576,7 +580,7 @@ const DATA = /*__DATA__*/null;
       xh.setAttribute("x1", x(i)); xh.setAttribute("x2", x(i)); xh.setAttribute("visibility", "visible");
       const rows = series.map(s => ({ s, p: s.pts.find(p => p.i === i) })).filter(o => o.p).sort((a, b) => b.p.v - a.p.v);
       const fr = rows.find(o => o.s.c.id === focus);
-      dots.innerHTML = fr ? `<circle cx="${x(i)}" cy="${y(fr.p.v)}" r="5" fill="var(--accent)" stroke="var(--paper-card)" stroke-width="2"/>` : "";
+      dots.innerHTML = fr ? `<circle cx="${x(i)}" cy="${y(fr.p.v)}" r="5" fill="var(--mark)" stroke="var(--paper-card)" stroke-width="2"/>` : "";
       tip.innerHTML = `<div class="t">${fmtDate(SNAPS[i].date)}</div>` + rows.map(o => {
         const on = o.s.c.id === focus;
         const right = mode === "pct" ? `${fmtV(o.p.v)} <span class="flat" style="font-weight:500">${fmtShort(o.p.raw)}</span>` : fmtFull(o.p.v);
@@ -659,7 +663,7 @@ const DATA = /*__DATA__*/null;
     renderAll();
   }
   window.addEventListener("hashchange", () => { const id = partyFromHash(); if (id !== party) setParty(id); else renderParty(); });
-  function renderAll() { renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); renderNotes(); }
+  function renderAll() { document.querySelector("main").dataset.party = party; renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); renderNotes(); }
   document.getElementById("footnote").textContent =
     `Latest counts collected ${fmtDate(latest.date)}. Per-account sources are recorded in data/followers.csv.`;
 
