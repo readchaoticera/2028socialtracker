@@ -62,7 +62,6 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,whitmer,facebook,141030,false,2026-11-23,https://socialblade.com/facebook/page/gretchenwhitmer,
 2026-11-23,aoc,facebook,2200000,true,2026-08-14,https://www.yahoo.com/news/politics/articles/who-are-the-biggest-social-media-stars-in-congress-084500442.html,POLITICO analysis; Facebook requires login
 2026-11-23,shapiro,facebook,246969,false,,https://www.facebook.com/JoshShapiroPA/,Search snippet likely from mid-2024; Facebook requires login
-2026-11-23,khanna,facebook,375000,true,,https://www.facebook.com/RoKhannaUSA/,Undated cached snapshot; Facebook requires login
 2026-11-23,moore,facebook,219013,false,2024-07-15,https://www.facebook.com/iamwesmoore/,Cached snapshot from about mid-2024; Facebook requires login
 2026-11-23,aoc,instagram,9824380,false,2026-11-23,https://instastatistics.com/aoc,
 2026-11-23,warnock,instagram,441129,false,2026-11-23,https://socialblade.com/instagram/user/raphaelwarnock,
@@ -81,3 +80,4 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,newsom,instagram,4144074,false,2026-11-23,https://socialblade.com/instagram/user/gavinnewsom,
 2026-11-23,ossoff,instagram,1615780,false,2026-11-23,https://socialblade.com/instagram/user/jonossoff,
 2026-11-23,khanna,instagram,204512,false,2026-11-23,https://socialblade.com/instagram/user/rokhannausa,
+2026-11-23,khanna,facebook,514000,true,2026-11-23,https://www.facebook.com/RoKhannaUSA/,"Followers shown on the page (rounded), checked by hand; Social Blade has stopped crawling this page"
