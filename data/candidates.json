@@ -43,7 +43,10 @@
           "handle": "@kamalaharris",
           "url": "https://www.instagram.com/kamalaharris/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@kamalaharris",
+          "url": "https://www.youtube.com/@kamalaharris"
+        }
       }
     },
     {
@@ -67,7 +70,10 @@
           "handle": "@aoc",
           "url": "https://www.instagram.com/aoc/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@AOC",
+          "url": "https://www.youtube.com/@AOC"
+        }
       }
     },
     {
@@ -91,7 +97,10 @@
           "handle": "@gavinnewsom",
           "url": "https://www.instagram.com/gavinnewsom/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@GavinNewsom",
+          "url": "https://www.youtube.com/@GavinNewsom"
+        }
       }
     },
     {
@@ -115,7 +124,10 @@
           "handle": "@jonossoff",
           "url": "https://www.instagram.com/jonossoff/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@SenJonOssoff",
+          "url": "https://www.youtube.com/@SenJonOssoff"
+        }
       }
     },
     {
@@ -139,7 +151,10 @@
           "handle": "@raphaelwarnock",
           "url": "https://www.instagram.com/raphaelwarnock/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@reverendraphaelwarnock2754",
+          "url": "https://www.youtube.com/@reverendraphaelwarnock2754"
+        }
       }
     },
     {
@@ -163,7 +178,10 @@
           "handle": "@captmarkkelly",
           "url": "https://www.instagram.com/captmarkkelly/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@CaptMarkKelly",
+          "url": "https://www.youtube.com/@CaptMarkKelly"
+        }
       }
     },
     {
@@ -187,7 +205,10 @@
           "handle": "@pete.buttigieg",
           "url": "https://www.instagram.com/pete.buttigieg/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@petebuttigieg",
+          "url": "https://www.youtube.com/@petebuttigieg"
+        }
       }
     },
     {
@@ -211,7 +232,10 @@
           "handle": "@joshshapiropa",
           "url": "https://www.instagram.com/joshshapiropa/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@JoshShapiroforPennsylvania",
+          "url": "https://www.youtube.com/@JoshShapiroforPennsylvania"
+        }
       }
     },
     {
@@ -235,7 +259,10 @@
           "handle": "@jbpritzker",
           "url": "https://www.instagram.com/jbpritzker/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@jbpritzker",
+          "url": "https://www.youtube.com/@jbpritzker"
+        }
       }
     },
     {
@@ -258,7 +285,10 @@
           "handle": "@elissa.slotkin",
           "url": "https://www.instagram.com/elissa.slotkin/"
         },
-        "youtube": {}
+        "youtube": {
+          "handle": "@Elissa.Slotkin",
+          "url": "https://www.youtube.com/@Elissa.Slotkin"
+        }
       }
     },
     {
@@ -281,7 +311,171 @@
           "handle": "@rahmemanuel",
           "url": "https://www.instagram.com/rahmemanuel/"
         },
-        "youtube": {}
+        "youtube": {
+          "status": "none"
+        }
+      }
+    },
+    {
+      "id": "beshear",
+      "name": "Andy Beshear",
+      "role": "Governor of Kentucky",
+      "accounts": {
+        "x": {
+          "handle": "@AndyBeshearKY",
+          "url": "https://x.com/AndyBeshearKY"
+        },
+        "tiktok": {
+          "handle": "@andybeshearky",
+          "url": "https://www.tiktok.com/@andybeshearky"
+        },
+        "facebook": {
+          "handle": "AndyBeshearKY",
+          "url": "https://www.facebook.com/AndyBeshearKY/"
+        },
+        "instagram": {
+          "handle": "@andybeshearky",
+          "url": "https://www.instagram.com/andybeshearky/"
+        },
+        "youtube": {
+          "handle": "@AndyBeshearKY",
+          "url": "https://www.youtube.com/@AndyBeshearKY"
+        }
+      }
+    },
+    {
+      "id": "gallego",
+      "name": "Ruben Gallego",
+      "role": "U.S. Senator, Arizona",
+      "accounts": {
+        "x": {
+          "handle": "@RubenGallego",
+          "url": "https://x.com/RubenGallego"
+        },
+        "tiktok": {
+          "handle": "@rubengallegoaz",
+          "url": "https://www.tiktok.com/@rubengallegoaz"
+        },
+        "facebook": {
+          "handle": "GallegoforArizona",
+          "url": "https://www.facebook.com/GallegoforArizona/"
+        },
+        "instagram": {
+          "handle": "@gallegoforaz",
+          "url": "https://www.instagram.com/gallegoforaz/"
+        },
+        "youtube": {
+          "handle": "@Ruben_Gallego",
+          "url": "https://www.youtube.com/@Ruben_Gallego"
+        }
+      }
+    },
+    {
+      "id": "booker",
+      "name": "Cory Booker",
+      "role": "U.S. Senator, New Jersey",
+      "accounts": {
+        "x": {
+          "handle": "@CoryBooker",
+          "url": "https://x.com/CoryBooker"
+        },
+        "tiktok": {
+          "handle": "@corybooker",
+          "url": "https://www.tiktok.com/@corybooker"
+        },
+        "facebook": {
+          "handle": "corybooker",
+          "url": "https://www.facebook.com/corybooker/"
+        },
+        "instagram": {
+          "handle": "@corybooker",
+          "url": "https://www.instagram.com/corybooker/"
+        },
+        "youtube": {
+          "handle": "@CoryBooker",
+          "url": "https://www.youtube.com/@CoryBooker"
+        }
+      }
+    },
+    {
+      "id": "khanna",
+      "name": "Ro Khanna",
+      "role": "U.S. Representative, California",
+      "accounts": {
+        "x": {
+          "handle": "@RoKhanna",
+          "url": "https://x.com/RoKhanna"
+        },
+        "tiktok": {
+          "handle": "@rokhannausa",
+          "url": "https://www.tiktok.com/@rokhannausa"
+        },
+        "facebook": {
+          "handle": "RoKhannaUSA",
+          "url": "https://www.facebook.com/RoKhannaUSA/"
+        },
+        "instagram": {
+          "handle": "@reprokhanna",
+          "url": "https://www.instagram.com/reprokhanna/"
+        },
+        "youtube": {
+          "handle": "@rokhanna",
+          "url": "https://www.youtube.com/@rokhanna"
+        }
+      }
+    },
+    {
+      "id": "moore",
+      "name": "Wes Moore",
+      "role": "Governor of Maryland",
+      "accounts": {
+        "x": {
+          "handle": "@iamwesmoore",
+          "url": "https://x.com/iamwesmoore"
+        },
+        "tiktok": {
+          "handle": "@wesmoore",
+          "url": "https://www.tiktok.com/@wesmoore"
+        },
+        "facebook": {
+          "handle": "iamwesmoore",
+          "url": "https://www.facebook.com/iamwesmoore/"
+        },
+        "instagram": {
+          "handle": "@iamwesmoore",
+          "url": "https://www.instagram.com/iamwesmoore/"
+        },
+        "youtube": {
+          "handle": "@WesMooreforMaryland",
+          "url": "https://www.youtube.com/@WesMooreforMaryland"
+        }
+      }
+    },
+    {
+      "id": "whitmer",
+      "name": "Gretchen Whitmer",
+      "role": "Governor of Michigan",
+      "accounts": {
+        "x": {
+          "handle": "@gretchenwhitmer",
+          "url": "https://x.com/gretchenwhitmer"
+        },
+        "tiktok": {
+          "handle": "@biggretchwhitmer",
+          "url": "https://www.tiktok.com/@biggretchwhitmer"
+        },
+        "facebook": {
+          "handle": "GretchenWhitmer",
+          "url": "https://www.facebook.com/GretchenWhitmer/"
+        },
+        "instagram": {
+          "handle": "@gewhitmer",
+          "url": "https://www.instagram.com/gewhitmer/"
+        },
+        "youtube": {
+          "handle": "@gretchenwhitmermi",
+          "url": "https://www.youtube.com/@gretchenwhitmermi"
+        }
       }
     }
   ],
@@ -292,6 +486,8 @@
     "Warnock: the verified TikTok @raphaelwarnock matches his Instagram handle but is not linked from any official site. Office accounts (@SenatorWarnock) are not counted.",
     "Kelly: office accounts (@SenMarkKelly) are not counted.",
     "Shapiro, Pritzker and Slotkin: their governor’s or Senate office accounts are larger on several platforms (for example @GovernorShapiro and @GovPritzker on X) and are not counted.",
-    "Emanuel and Slotkin have no TikTok account."
+    "Emanuel and Slotkin have no TikTok account, and Emanuel has no YouTube channel.",
+    "Newsom: his podcast channel, This is Gavin Newsom, is not counted. Ossoff: his YouTube handle is @SenJonOssoff, but it is his campaign channel.",
+    "Booker, Beshear, Gallego, Moore and Whitmer: office pages (for example @senbooker on TikTok and GovGretchenWhitmer on Facebook) are not counted. Khanna’s Instagram, @reprokhanna, is labeled “Rep.” but is his main account."
   ]
 }

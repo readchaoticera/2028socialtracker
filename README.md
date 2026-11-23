@@ -37,13 +37,14 @@ python3 scripts/fetch_counts.py --set aoc.facebook=2310000 --set newsom.facebook
 
 ## Adding a candidate
 
-Add an entry to `data/candidates.json` with the next free `slot` (1–8; each slot is a fixed,
-colorblind-checked chart color). Use `"status": "none"` for a platform where they have no account.
-Their counts start with the next snapshot.
+Add an entry to `data/candidates.json` with their handle on each platform, then run
+`python3 scripts/fetch_counts.py --date <latest snapshot date> --fill` to backfill them. Use `"status": "none"` for a platform where they have no account.
+
 
 ## Sources
 
 - X: `api.fxtwitter.com/<handle>` (public mirror of the X profile, exact count)
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
-- Instagram: instastatistics.com (third-party tracker, usually a few days behind; its date is recorded)
+- YouTube: the channel page header (rounded by YouTube, marked approximate)
+- Instagram: instastatistics.com where it tracks the account (Harris, AOC, Newsom, Ossoff); otherwise manual entry with `--set`
 - Facebook: manual entry, cached page copies, or news reports
