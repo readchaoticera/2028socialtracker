@@ -290,13 +290,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
 .methodology ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
 .methodology li { margin-bottom: 8px; font-size: 0.92rem; }
 .methodology strong { color: var(--ink); }
-.flag ul { margin: 4px 0 0; padding-left: 16px; color: inherit; }
-.flag li { font-size: 0.74rem; line-height: 1.45; margin-bottom: 3px; }
 .footnote { margin: 14px 0 0; font-size: 0.84rem; color: var(--ink-soft); }
-.flag {
-  font-size: 0.76rem; color: var(--note-ink); background: var(--note-bg);
-  border: 1px solid var(--note-border); border-radius: 8px; padding: 8px 12px 6px; margin-top: 14px;
-}
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--footer-bg); color: var(--footer-ink); }
@@ -385,7 +379,6 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
       <li><strong>Snapshots are weekly.</strong> Counts are collected once a week: X and TikTok from public profile data (exact counts), YouTube from the channel page (rounded by YouTube), Bluesky and Threads from their public profiles (exact counts), and Facebook and Instagram from the Social Blade and Instastatistics trackers. The source for every figure is kept in the data file.</li>
       <li><strong>In an age of algorithmic feeds, do followers matter?</strong> Followers are just one of many metrics that we track to understand an account’s online influence. Following an account or subscribing to a YouTube channel is an important engagement signal that a user makes. We also track post views, post volume, and engagement in a number of ways. Future updates to this dashboard will include those metrics too.</li>
     </ul>
-    <div class="flag" id="notes" hidden></div>
     <p class="footnote" id="footnote"></p>
   </section>
 </main>
@@ -695,13 +688,6 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
     }).join("");
   }
 
-  // ---------- notes ----------
-  function renderNotes() {
-    const notes = (DATA.notes || []).map(n => typeof n === "string" ? { party: "D", text: n } : n).filter(n => n.party === party);
-    const el = document.getElementById("notes");
-    el.hidden = !notes.length;
-    el.innerHTML = "<b>Account notes</b><ul>" + notes.map(n => `<li>${esc(n.text)}</li>`).join("") + "</ul>";
-  }
 
   // ---------- party switch ----------
   function renderParty() {
@@ -722,14 +708,12 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
     renderAll();
   }
   window.addEventListener("hashchange", () => { const id = partyFromHash(); if (id !== party) setParty(id); else renderParty(); });
-  function renderAll() { document.querySelector("main").dataset.party = party; renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); renderNotes(); }
+  function renderAll() { document.querySelector("main").dataset.party = party; renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); }
   document.getElementById("footnote").textContent =
     `Latest counts collected ${fmtDate(latest.date)}. Per-account sources are recorded in data/followers.csv.`;
 
   if (QS.has("solo")) document.getElementById("party").hidden = true;      // one party only, no switch
-  if (QS.get("methods") === "0") {                                         // keep only this party's account notes
-    document.querySelectorAll(".methodology > h2, .methodology > ul, .methodology > .footnote").forEach(el => { el.hidden = true; });
-  }
+  if (QS.get("methods") === "0") document.querySelector(".methodology").hidden = true;  // methodology shown in one iframe only
   renderAll();
 })();
 </script>
