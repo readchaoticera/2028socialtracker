@@ -1,0 +1,52 @@
+{
+  "platforms": [
+    {"id": "x", "label": "X"},
+    {"id": "tiktok", "label": "TikTok"},
+    {"id": "facebook", "label": "Facebook"},
+    {"id": "instagram", "label": "Instagram"}
+  ],
+  "candidates": [
+    {
+      "id": "harris", "name": "Kamala Harris", "role": "Former Vice President", "slot": 1,
+      "accounts": {
+        "x":         {"handle": "@KamalaHarris", "url": "https://x.com/KamalaHarris"},
+        "tiktok":    {"handle": "@kamalaharris", "url": "https://www.tiktok.com/@kamalaharris"},
+        "facebook":  {"handle": "KamalaHarris", "url": "https://www.facebook.com/KamalaHarris"},
+        "instagram": {"handle": "@kamalaharris", "url": "https://www.instagram.com/kamalaharris/"}
+      }
+    },
+    {
+      "id": "aoc", "name": "Alexandria Ocasio-Cortez", "role": "U.S. Representative, New York", "slot": 2,
+      "accounts": {
+        "x":         {"handle": "@AOC", "url": "https://x.com/AOC"},
+        "tiktok":    {"handle": "@aoc", "url": "https://www.tiktok.com/@aoc"},
+        "facebook":  {"handle": "OcasioCortez", "url": "https://www.facebook.com/OcasioCortez"},
+        "instagram": {"handle": "@aoc", "url": "https://www.instagram.com/aoc/"}
+      }
+    },
+    {
+      "id": "newsom", "name": "Gavin Newsom", "role": "Governor of California", "slot": 3,
+      "accounts": {
+        "x":         {"handle": "@GavinNewsom", "url": "https://x.com/GavinNewsom"},
+        "tiktok":    {"handle": "@gavinnewsom", "url": "https://www.tiktok.com/@gavinnewsom"},
+        "facebook":  {"handle": "GavinNewsom", "url": "https://www.facebook.com/GavinNewsom/"},
+        "instagram": {"handle": "@gavinnewsom", "url": "https://www.instagram.com/gavinnewsom/"}
+      }
+    },
+    {
+      "id": "ossoff", "name": "Jon Ossoff", "role": "U.S. Senator, Georgia", "slot": 4,
+      "accounts": {
+        "x":         {"handle": "@ossoff", "url": "https://x.com/ossoff"},
+        "tiktok":    {"handle": "@jon", "url": "https://www.tiktok.com/@jon"},
+        "facebook":  {"handle": "jonossoff", "url": "https://www.facebook.com/jonossoff/"},
+        "instagram": {"handle": "@jonossoff", "url": "https://www.instagram.com/jonossoff/"}
+      }
+    }
+  ],
+  "notes": [
+    "Harris: her former campaign account @KamalaHQ was rebranded “Headquarters” in February 2026 and is not counted.",
+    "Ocasio-Cortez: office accounts (@RepAOC on X and Instagram) and a second TikTok, @aocinthehouse, are not counted.",
+    "Newsom: @GovPressOffice and @CAgovernor on X are not counted.",
+    "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted."
+  ]
+}

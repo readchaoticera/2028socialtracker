@@ -1,0 +1,17 @@
+snapshot,candidate,platform,followers,approximate,count_date,source,note
+2026-11-23,harris,x,20928520,false,2026-11-23,https://api.fxtwitter.com/KamalaHarris,
+2026-11-23,harris,tiktok,10193632,false,2026-11-23,https://www.tiktok.com/@kamalaharris,
+2026-11-23,harris,facebook,6259875,false,,https://www.facebook.com/KamalaHarris/,Undated search-index snapshot; Facebook requires login
+2026-11-23,harris,instagram,20104682,false,2026-11-18,https://instastatistics.com/kamalaharris,
+2026-11-23,aoc,x,12629692,false,2026-11-23,https://api.fxtwitter.com/AOC,
+2026-11-23,aoc,tiktok,4099904,false,2026-11-23,https://www.tiktok.com/@aoc,
+2026-11-23,aoc,facebook,2200000,true,2026-08-14,https://www.yahoo.com/news/politics/articles/who-are-the-biggest-social-media-stars-in-congress-084500442.html,POLITICO analysis; Facebook requires login
+2026-11-23,aoc,instagram,9825136,false,2026-11-22,https://instastatistics.com/aoc,
+2026-11-23,newsom,x,3145548,false,2026-11-23,https://api.fxtwitter.com/GavinNewsom,
+2026-11-23,newsom,tiktok,3134543,false,2026-11-23,https://www.tiktok.com/@gavinnewsom,
+2026-11-23,newsom,facebook,2315745,false,2026-05-28,https://www.facebook.com/GavinNewsom/,Search-engine cache about 179 days old; Facebook requires login
+2026-11-23,newsom,instagram,4145051,false,2026-11-05,https://instastatistics.com/gavinnewsom,
+2026-11-23,ossoff,x,1143673,false,2026-11-23,https://api.fxtwitter.com/ossoff,
+2026-11-23,ossoff,tiktok,1088420,false,2026-11-23,https://www.tiktok.com/@jon,
+2026-11-23,ossoff,facebook,1252871,false,,https://www.facebook.com/jonossoff/,Undated search-engine cache; Facebook requires login
+2026-11-23,ossoff,instagram,1584346,false,2026-11-11,https://instastatistics.com/jonossoff,
