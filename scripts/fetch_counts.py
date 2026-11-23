@@ -12,7 +12,8 @@ Automatic sources (public, no login):
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
   Instagram  instastatistics.com/<handle>          third-party tracker, usually a few days old;
              falls back to Social Blade for accounts it does not track (1 credit)
-  Facebook   Social Blade Business API             page likes, dated daily (1 credit per page)
+  Facebook   the larger of Social Blade page likes (1 credit per page) and the latest hand-checked
+             follower count in data/facebook_followers.csv
 Social Blade credentials come from SOCIALBLADE_CLIENT_ID / SOCIALBLADE_TOKEN, or from network secrets
 on the environment. Values passed with --set always win.
 Any fetch that fails is carried forward the same way and reported at the end.
@@ -124,14 +125,39 @@ def socialblade(platform, handle):
 CREDITS = {}
 
 
-def fetch_facebook(handle, today):
-    data = socialblade("facebook", handle)
-    daily = sorted(data.get("daily") or [], key=lambda r: r["date"])
-    if daily:
-        n, date = daily[-1]["likes"], daily[-1]["date"][:10]
-    else:
-        n, date = data["statistics"]["total"]["likes"], today
-    return int(n), date, f"https://socialblade.com/facebook/page/{handle.lstrip('@').lower()}"
+FB_FOLLOWERS = ROOT / "data/facebook_followers.csv"
+
+
+def manual_fb_followers(cid):
+    """Latest hand-checked Facebook follower count for a candidate, or None."""
+    if not FB_FOLLOWERS.exists():
+        return None
+    rows = [r for r in csv.DictReader(open(FB_FOLLOWERS, newline="")) if r["candidate"].strip() == cid and r["followers"].strip()]
+    if not rows:
+        return None
+    r = max(rows, key=lambda r: r["date"])
+    return int(r["followers"].replace(",", "")), r["date"].strip(), (r.get("source") or "").strip()
+
+
+def fetch_facebook(handle, today, cid=None):
+    """Use the larger of Social Blade page likes (fresh) and the latest hand-checked follower count."""
+    likes = None
+    try:
+        data = socialblade("facebook", handle)
+        daily = sorted(data.get("daily") or [], key=lambda r: r["date"])
+        if daily:
+            likes = (int(daily[-1]["likes"]), daily[-1]["date"][:10])
+        else:
+            likes = (int(data["statistics"]["total"]["likes"]), today)
+    except Exception as e:  # noqa: BLE001
+        sb_error = e
+    fol = manual_fb_followers(cid) if cid else None
+    if fol and (not likes or fol[0] >= likes[0]):
+        note = "Page followers, checked by hand" + ("" if likes else "; Social Blade has stopped crawling this page")
+        return fol[0], fol[1], f"https://www.facebook.com/{handle.lstrip('@')}/", True, note
+    if likes:
+        return likes[0], likes[1], f"https://socialblade.com/facebook/page/{handle.lstrip('@').lower()}", False, "Page likes (Social Blade)"
+    raise sb_error
 
 
 FETCHERS = {"facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
@@ -194,9 +220,11 @@ def main():
                 row.update(followers=n, count_date=d, source="manual entry")
             elif p["id"] in FETCHERS:
                 try:
-                    n, d, src, *rest = FETCHERS[p["id"]](acct["handle"], a.date)
+                    kw = {"cid": c["id"]} if p["id"] == "facebook" else {}
+                    n, d, src, *rest = FETCHERS[p["id"]](acct["handle"], a.date, **kw)
                     row.update(followers=n, count_date=d or "", source=src,
-                               approximate="true" if (rest and rest[0]) else "false")
+                               approximate="true" if (rest and rest[0]) else "false",
+                               note=rest[1] if len(rest) > 1 else "")
                 except Exception as e:  # noqa: BLE001
                     problems.append(f"{c['id']}.{p['id']}: {e}")
                     row = carry(row, last.get(key), problems, key)

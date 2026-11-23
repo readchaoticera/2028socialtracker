@@ -60,8 +60,6 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,gallego,facebook,67416,false,2026-11-23,https://socialblade.com/facebook/page/gallegoforarizona,
 2026-11-23,booker,facebook,1938802,false,2026-11-23,https://socialblade.com/facebook/page/corybooker,
 2026-11-23,whitmer,facebook,141030,false,2026-11-23,https://socialblade.com/facebook/page/gretchenwhitmer,
-2026-11-23,shapiro,facebook,246969,false,,https://www.facebook.com/JoshShapiroPA/,Search snippet likely from mid-2024; Facebook requires login
-2026-11-23,moore,facebook,219013,false,2024-07-15,https://www.facebook.com/iamwesmoore/,Cached snapshot from about mid-2024; Facebook requires login
 2026-11-23,aoc,instagram,9824380,false,2026-11-23,https://instastatistics.com/aoc,
 2026-11-23,warnock,instagram,441129,false,2026-11-23,https://socialblade.com/instagram/user/raphaelwarnock,
 2026-11-23,kelly,instagram,834893,false,2026-11-23,https://socialblade.com/instagram/user/captmarkkelly,
@@ -79,5 +77,7 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,newsom,instagram,4144074,false,2026-11-23,https://socialblade.com/instagram/user/gavinnewsom,
 2026-11-23,ossoff,instagram,1615780,false,2026-11-23,https://socialblade.com/instagram/user/jonossoff,
 2026-11-23,khanna,instagram,204512,false,2026-11-23,https://socialblade.com/instagram/user/rokhannausa,
-2026-11-23,khanna,facebook,514000,true,2026-11-23,https://www.facebook.com/RoKhannaUSA/,"Followers shown on the page (rounded), checked by hand; Social Blade has stopped crawling this page"
-2026-11-23,aoc,facebook,2300000,true,2026-11-23,https://www.facebook.com/OcasioCortez/,"Followers shown on the page (rounded), checked by hand; Social Blade has stopped crawling this page"
+2026-11-23,aoc,facebook,2336842,false,2026-11-23,https://socialblade.com/facebook/page/ocasiocortez,Page likes (Social Blade)
+2026-11-23,khanna,facebook,514508,false,2026-11-23,https://socialblade.com/facebook/page/rokhannausa,Page likes (Social Blade)
+2026-11-23,shapiro,facebook,247102,false,2026-11-23,https://socialblade.com/facebook/page/joshshapiropa,Page likes (Social Blade)
+2026-11-23,moore,facebook,219618,false,2026-11-23,https://socialblade.com/facebook/page/iamwesmoore,Page likes (Social Blade)

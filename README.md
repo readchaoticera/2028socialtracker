@@ -47,7 +47,7 @@ Add an entry to `data/candidates.json` with their handle on each platform, then 
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
 - YouTube: the channel page header (rounded by YouTube, marked approximate)
 - Instagram: instastatistics.com when it tracks the account and is at most 7 days behind (free); otherwise Social Blade (1 credit)
-- Facebook: Social Blade Business API (page likes, dated daily; 1 credit per page). Pages Social Blade has stopped crawling (AOC, Shapiro, Khanna, Moore) need `--set`. Credentials come from the `SOCIALBLADE_CLIENT_ID` and `SOCIALBLADE_TOKEN` environment variables on the 2028socialtracker cloud environment. Never commit them.
+- Facebook: the larger of Social Blade page likes (dated daily; 1 credit per page) and the latest hand-checked follower count in `data/facebook_followers.csv`. To add a follower count, append a row: `candidate,followers,date,source`. Credentials come from the `SOCIALBLADE_CLIENT_ID` and `SOCIALBLADE_TOKEN` environment variables on the 2028socialtracker cloud environment. Never commit them.
 
 ## Automatic weekly update
 
