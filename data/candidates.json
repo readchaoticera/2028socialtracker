@@ -21,6 +21,10 @@
       "label": "YouTube"
     },
     {
+      "id": "threads",
+      "label": "Threads"
+    },
+    {
       "id": "bluesky",
       "label": "Bluesky",
       "parties": [
@@ -58,6 +62,10 @@
         "bluesky": {
           "handle": "@kamalaharris.com",
           "url": "https://bsky.app/profile/kamalaharris.com"
+        },
+        "threads": {
+          "handle": "@kamalaharris",
+          "url": "https://www.threads.com/@kamalaharris"
         }
       }
     },
@@ -90,6 +98,10 @@
         "bluesky": {
           "handle": "@aoc.bsky.social",
           "url": "https://bsky.app/profile/aoc.bsky.social"
+        },
+        "threads": {
+          "handle": "@aoc",
+          "url": "https://www.threads.com/@aoc"
         }
       }
     },
@@ -122,6 +134,10 @@
         "bluesky": {
           "handle": "@gavinnewsom.bsky.social",
           "url": "https://bsky.app/profile/gavinnewsom.bsky.social"
+        },
+        "threads": {
+          "handle": "@gavinnewsom",
+          "url": "https://www.threads.com/@gavinnewsom"
         }
       }
     },
@@ -154,6 +170,10 @@
         "bluesky": {
           "handle": "@ossoff.bsky.social",
           "url": "https://bsky.app/profile/ossoff.bsky.social"
+        },
+        "threads": {
+          "handle": "@jonossoff",
+          "url": "https://www.threads.com/@jonossoff"
         }
       }
     },
@@ -185,6 +205,10 @@
         },
         "bluesky": {
           "status": "none"
+        },
+        "threads": {
+          "handle": "@raphaelwarnock",
+          "url": "https://www.threads.com/@raphaelwarnock"
         }
       }
     },
@@ -217,6 +241,10 @@
         "bluesky": {
           "handle": "@captmarkkelly.bsky.social",
           "url": "https://bsky.app/profile/captmarkkelly.bsky.social"
+        },
+        "threads": {
+          "handle": "@captmarkkelly",
+          "url": "https://www.threads.com/@captmarkkelly"
         }
       }
     },
@@ -249,6 +277,10 @@
         "bluesky": {
           "handle": "@petebuttigieg.bsky.social",
           "url": "https://bsky.app/profile/petebuttigieg.bsky.social"
+        },
+        "threads": {
+          "handle": "@pete.buttigieg",
+          "url": "https://www.threads.com/@pete.buttigieg"
         }
       }
     },
@@ -281,6 +313,10 @@
         "bluesky": {
           "handle": "@joshshapiropa.bsky.social",
           "url": "https://bsky.app/profile/joshshapiropa.bsky.social"
+        },
+        "threads": {
+          "handle": "@joshshapiropa",
+          "url": "https://www.threads.com/@joshshapiropa"
         }
       }
     },
@@ -313,6 +349,10 @@
         "bluesky": {
           "handle": "@jbpritzker.bsky.social",
           "url": "https://bsky.app/profile/jbpritzker.bsky.social"
+        },
+        "threads": {
+          "handle": "@jbpritzker",
+          "url": "https://www.threads.com/@jbpritzker"
         }
       }
     },
@@ -344,6 +384,10 @@
         },
         "bluesky": {
           "status": "none"
+        },
+        "threads": {
+          "handle": "@elissa.slotkin",
+          "url": "https://www.threads.com/@elissa.slotkin"
         }
       }
     },
@@ -374,6 +418,10 @@
         "bluesky": {
           "handle": "@rahmemanuel.bsky.social",
           "url": "https://bsky.app/profile/rahmemanuel.bsky.social"
+        },
+        "threads": {
+          "handle": "@rahmemanuel",
+          "url": "https://www.threads.com/@rahmemanuel"
         }
       }
     },
@@ -406,6 +454,10 @@
         "bluesky": {
           "handle": "@andybeshearky.bsky.social",
           "url": "https://bsky.app/profile/andybeshearky.bsky.social"
+        },
+        "threads": {
+          "handle": "@andybeshearky",
+          "url": "https://www.threads.com/@andybeshearky"
         }
       }
     },
@@ -438,6 +490,10 @@
         "bluesky": {
           "handle": "@gallegoforarizona.com",
           "url": "https://bsky.app/profile/gallegoforarizona.com"
+        },
+        "threads": {
+          "handle": "@gallegoforaz",
+          "url": "https://www.threads.com/@gallegoforaz"
         }
       }
     },
@@ -470,6 +526,10 @@
         "bluesky": {
           "handle": "@corybooker.com",
           "url": "https://bsky.app/profile/corybooker.com"
+        },
+        "threads": {
+          "handle": "@corybooker",
+          "url": "https://www.threads.com/@corybooker"
         }
       }
     },
@@ -502,6 +562,10 @@
         "bluesky": {
           "handle": "@rokhanna.bsky.social",
           "url": "https://bsky.app/profile/rokhanna.bsky.social"
+        },
+        "threads": {
+          "handle": "@rokhannausa",
+          "url": "https://www.threads.com/@rokhannausa"
         }
       }
     },
@@ -534,6 +598,10 @@
         "bluesky": {
           "handle": "@iamwesmoore.bsky.social",
           "url": "https://bsky.app/profile/iamwesmoore.bsky.social"
+        },
+        "threads": {
+          "handle": "@iamwesmoore",
+          "url": "https://www.threads.com/@iamwesmoore"
         }
       }
     },
@@ -565,6 +633,10 @@
         },
         "bluesky": {
           "status": "none"
+        },
+        "threads": {
+          "handle": "@gewhitmer",
+          "url": "https://www.threads.com/@gewhitmer"
         }
       }
     },
@@ -591,6 +663,9 @@
           "url": "https://www.instagram.com/jdvance/"
         },
         "youtube": {
+          "status": "none"
+        },
+        "threads": {
           "status": "none"
         }
       }
@@ -620,6 +695,10 @@
         "youtube": {
           "handle": "@TedCruzChannel",
           "url": "https://www.youtube.com/@TedCruzChannel"
+        },
+        "threads": {
+          "handle": "@tedcruz",
+          "url": "https://www.threads.com/@tedcruz"
         }
       }
     },
@@ -647,6 +726,9 @@
         "youtube": {
           "handle": "@RonDeSantis",
           "url": "https://www.youtube.com/@RonDeSantis"
+        },
+        "threads": {
+          "status": "none"
         }
       }
     },
@@ -674,6 +756,10 @@
         "youtube": {
           "handle": "@MarcoRubio",
           "url": "https://www.youtube.com/@MarcoRubio"
+        },
+        "threads": {
+          "handle": "@marcorubio",
+          "url": "https://www.threads.com/@marcorubio"
         }
       }
     },
@@ -702,6 +788,10 @@
         "youtube": {
           "handle": "@TuckerCarlson",
           "url": "https://www.youtube.com/@TuckerCarlson"
+        },
+        "threads": {
+          "handle": "@tuckercarlson",
+          "url": "https://www.threads.com/@tuckercarlson"
         }
       }
     }
@@ -770,6 +860,14 @@
     {
       "party": "D",
       "text": "Bluesky: office accounts (for example governor.ca.gov, ocasio-cortez.house.gov and booker.senate.gov) are not counted. Warnock has only a Senate office account there. The Bluesky accounts under Slotkin’s and Whitmer’s names have never posted and are not verified, so they are not treated as theirs."
+    },
+    {
+      "party": "R",
+      "text": "Threads: Vance and DeSantis have no Threads profiles."
+    },
+    {
+      "party": "D",
+      "text": "Threads: each person’s Threads account shares their personal Instagram username; office accounts (for example @senbooker and @governorshapiro) are not counted."
     }
   ]
 }

@@ -289,7 +289,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <h1>Who has the biggest social media audience for 2028?</h1>
     <p class="dek">
       Follower counts for the Democrats and Republicans most often mentioned as 2028 presidential
-      contenders, across X, TikTok, Facebook, Instagram and YouTube, plus Bluesky for Democrats. Updated weekly.
+      contenders, across X, TikTok, Facebook, Instagram, YouTube and Threads, plus Bluesky for Democrats. Updated weekly.
     </p>
     <p class="asof" id="asof"></p>
   </section>
@@ -343,7 +343,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
       <li><strong>Followers, not engagement.</strong> Facebook figures are the larger of the page’s likes (from Social Blade) and its followers (checked by hand). YouTube figures are channel subscribers. TikTok, Instagram, YouTube and often Facebook display rounded figures (“5.2M”); those are recorded as shown. Small weekly changes on rounded figures can be noise.</li>
       <li><strong>“No account”</strong> means we found no active personal account on that platform. It counts as zero in the combined total.</li>
       <li><strong>Combined audience obviously double-counts some people.</strong> Many people may follow a politician on multiple platforms.</li>
-      <li><strong>Snapshots are weekly.</strong> Counts are collected once a week: X and TikTok from public profile data (exact counts), YouTube from the channel page (rounded by YouTube), and Facebook and Instagram from the Social Blade and Instastatistics trackers. The source for every figure is kept in the data file.</li>
+      <li><strong>Snapshots are weekly.</strong> Counts are collected once a week: X and TikTok from public profile data (exact counts), YouTube from the channel page (rounded by YouTube), Bluesky and Threads from their public profiles (exact counts), and Facebook and Instagram from the Social Blade and Instastatistics trackers. The source for every figure is kept in the data file.</li>
     </ul>
     <div class="flag" id="notes" hidden></div>
     <p class="footnote" id="footnote"></p>
@@ -466,7 +466,7 @@ const DATA = /*__DATA__*/null;
       .sort((a, b) => (b.v || 0) - (a.v || 0));
     const max = Math.max(1, ...rows.map(r => r.v || 0));
     // platform mix inside the combined bar: one hue per person, platform shown by opacity steps
-    const mixOpacity = [1, 0.78, 0.6, 0.44, 0.3, 0.18];
+    const mixOpacity = [1, 0.8, 0.64, 0.5, 0.38, 0.27, 0.17];
     document.getElementById("bars").innerHTML = rows.map((r, k) => {
       let barHtml;
       if (!r.has) barHtml = `<span class="bar-none">No account</span>`;

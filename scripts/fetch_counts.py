@@ -8,6 +8,7 @@
 
 Automatic sources (public, no login):
   Bluesky    public.api.bsky.app (public API)      exact count
+  Threads    www.threads.com/@<handle>             exact count, read with headless Chromium
   YouTube    youtube.com/@<handle>                 subscribers, rounded by YouTube (marked approximate)
   X          api.fxtwitter.com/<handle>            exact count
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
@@ -167,7 +168,30 @@ def fetch_bluesky(handle, today):
     return int(d["followersCount"]), today, f"https://bsky.app/profile/{h}"
 
 
-FETCHERS = {"bluesky": fetch_bluesky, "facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
+THREADS_CACHE = {}
+
+
+def fetch_threads(handle, today):
+    """Exact counts from public Threads profiles, read with headless Chromium (scripts/threads_counts.js).
+    All Threads handles are fetched in one browser session on first use."""
+    import subprocess
+    h = handle.lstrip("@")
+    if not THREADS_CACHE:
+        cfg = json.loads((ROOT / "data/candidates.json").read_text())
+        hs = [c["accounts"]["threads"]["handle"].lstrip("@") for c in cfg["candidates"]
+              if (c["accounts"].get("threads") or {}).get("handle")]
+        if h not in hs:
+            hs.append(h)
+        r = subprocess.run(["node", str(ROOT / "scripts/threads_counts.js"), *hs], capture_output=True, text=True, timeout=900)
+        THREADS_CACHE.update(json.loads(r.stdout.strip().splitlines()[-1]) if r.stdout.strip() else {})
+        THREADS_CACHE.setdefault("_ran", True)
+    n = THREADS_CACHE.get(h)
+    if n is None:
+        raise ValueError("Threads profile did not load or has no follower count")
+    return int(n), today, f"https://www.threads.com/@{h}"
+
+
+FETCHERS = {"threads": fetch_threads, "bluesky": fetch_bluesky, "facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
 
 
 def main():
