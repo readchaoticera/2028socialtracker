@@ -30,6 +30,9 @@
   --cta-bg: #02101f;        /* Chaotic Era navy, as on the other dashboards */
   --cta-ink: #ffffff;
   --cta-border: transparent;
+  --note-bg: #fff0f3;       /* light tint of the brand magenta */
+  --note-border: #f9bccb;
+  --note-ink: #7a1633;
   --on-accent: #ffffff;
   --gold: #d9a441;
   --flag-bg: #fff8e8;
@@ -50,6 +53,7 @@
     --line: #253041; --line-strong: #33415a;
     --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
     --cta-bg: #1a2a3f; --cta-ink: #ffffff; --cta-border: #2c3e57;
+    --note-bg: #2a1820; --note-border: #5a2a3b; --note-ink: #ffc9d6;
     --flag-bg: #2a2314; --flag-ink: #f0d08e;
     --up: #3fc495; --down: #f08a5d;
     --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -63,6 +67,7 @@
   --line: #253041; --line-strong: #33415a;
   --accent: #5aacff; --accent-dark: #86c2ff; --accent-soft: #19283a; --on-accent: #0b1320; --pink: #ff4f78;
     --cta-bg: #1a2a3f; --cta-ink: #ffffff; --cta-border: #2c3e57;
+    --note-bg: #2a1820; --note-border: #5a2a3b; --note-ink: #ffc9d6;
   --flag-bg: #2a2314; --flag-ink: #f0d08e;
   --up: #3fc495; --down: #f08a5d;
   --footer-bg: #0a0e13; --footer-ink: #93a0ae; --footer-link: #ffffff;
@@ -272,12 +277,12 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
 .methodology ul { margin: 0; padding-left: 20px; color: var(--ink-soft); }
 .methodology li { margin-bottom: 8px; font-size: 0.92rem; }
 .methodology strong { color: var(--ink); }
-.flag ul { margin: 6px 0 0; padding-left: 18px; color: inherit; }
-.flag li { font-size: 0.83rem; margin-bottom: 4px; }
+.flag ul { margin: 4px 0 0; padding-left: 16px; color: inherit; }
+.flag li { font-size: 0.74rem; line-height: 1.45; margin-bottom: 3px; }
 .footnote { margin: 14px 0 0; font-size: 0.84rem; color: var(--ink-soft); }
 .flag {
-  font-size: 0.83rem; color: var(--flag-ink); background: var(--flag-bg);
-  border: 1px solid var(--gold); border-radius: 8px; padding: 9px 12px; margin-top: 14px;
+  font-size: 0.76rem; color: var(--note-ink); background: var(--note-bg);
+  border: 1px solid var(--note-border); border-radius: 8px; padding: 8px 12px 6px; margin-top: 14px;
 }
 
 /* ---------- Footer ---------- */
