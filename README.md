@@ -14,7 +14,7 @@ Live dashboard (Artifact): https://claude.ai/artifact/2fFdChcBnZH9bSjYkD2EzD
 | `src/template.html` | The dashboard page (styles + script); data is injected at build time |
 | `scripts/fetch_counts.py` | Fetches this week's counts and appends a snapshot to the CSV |
 | `scripts/fetch_avatars.py` | Downloads each person's X profile picture into `assets/avatars/` as a face-centred 96px thumbnail (run when adding someone) |
-| `scripts/build.py` | Builds `dist/index.html` (published as the Artifact) and `docs/index.html` (served by GitHub Pages) |
+| `scripts/build.py` | Builds `dist/index.html` (published as the Artifact) and `docs/embed-k7q2m9/` (the embed served by GitHub Pages for the paywalled beehiiv post) |
 
 ## Weekly update
 
@@ -63,9 +63,9 @@ credits left. A normal week uses about 25–30 credits.
 
 ## GitHub Pages
 
-`docs/index.html` is a complete standalone copy of the dashboard. In the repository's
-Settings → Pages, set Source to "Deploy from a branch" and choose this branch with the `/docs` folder.
-Each weekly run rebuilds and commits it, so the site updates itself every Monday.
+GitHub Pages (this branch, `/docs` folder) serves only the embed version used by the paywalled beehiiv post.
+There is deliberately no public full page there. The embed pages carry noindex / noai robots tags.
+Turning Pages off breaks the beehiiv iframes unless the embed is first moved to other hosting.
 
 ## Paywalled beehiiv post
 

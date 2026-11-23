@@ -67,9 +67,12 @@ def main():
         '<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>\n'
         '</head>\n<body>\n'
     )
-    pages = ROOT / "docs/index.html"
-    pages.parent.mkdir(exist_ok=True)
-    pages.write_text(head + html + "\n</body>\n</html>\n")
+    # docs/ is served by GitHub Pages. Only the embed version is published there (it sits behind the
+    # beehiiv paywall); the full public page was removed so the paywall is the only way in.
+    (ROOT / "docs").mkdir(exist_ok=True)
+    stale = ROOT / "docs/index.html"
+    if stale.exists():
+        stale.unlink()
     (ROOT / "docs/.nojekyll").write_text("")
 
     # Embed version for an iframe inside a paywalled beehiiv post: no masthead, headline, subscribe bar or footer
@@ -79,7 +82,9 @@ def main():
     for pat in (r'<header class="masthead">.*?</header>', r'<section class="hero">.*?</section>', r'<aside class="cta".*?</aside>', r'<footer class="site-footer">.*?</footer>'):
         emb, n = _re.subn(pat, "", emb, count=1, flags=_re.S)
         assert n == 1, f"embed build: pattern not found: {pat}"
-    emb_head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')
+    emb_head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n'
+                            '<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noai, noimageai">\n'
+                            '<meta name="googlebot" content="noindex, nofollow">')
     emb_dir = ROOT / f"docs/{EMBED_PATH}"
     emb_dir.mkdir(parents=True, exist_ok=True)
     (emb_dir / "index.html").write_text(emb_head + emb + "\n</body>\n</html>\n")
