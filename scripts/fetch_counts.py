@@ -10,7 +10,8 @@ Automatic sources (public, no login):
   YouTube    youtube.com/@<handle>                 subscribers, rounded by YouTube (marked approximate)
   X          api.fxtwitter.com/<handle>            exact count
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
-  Instagram  instastatistics.com/<handle>          third-party tracker, usually a few days old
+  Instagram  instastatistics.com/<handle>          third-party tracker, usually a few days old;
+             falls back to Social Blade for accounts it does not track (1 credit)
   Facebook   Social Blade Business API             page likes, dated daily (1 credit per page)
 Social Blade credentials come from SOCIALBLADE_CLIENT_ID / SOCIALBLADE_TOKEN, or from network secrets
 on the environment. Values passed with --set always win.
@@ -56,6 +57,26 @@ def fetch_tiktok(handle, today):
 
 
 def fetch_instagram(handle, today):
+    """Instastatistics first (free); Social Blade (1 credit) for accounts it does not track."""
+    try:
+        res = fetch_instastatistics(handle, today)
+        age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(res[1])).days if res[1] else 99
+        if age <= 7:
+            return res
+        print(f"  (instastatistics figure for {handle} is {age} days old, asking Social Blade)")
+    except Exception:  # noqa: BLE001
+        pass
+    if True:
+        data = socialblade("instagram", handle)
+        daily = sorted(data.get("daily") or [], key=lambda r: r["date"])
+        if daily:
+            n, date = daily[-1]["followers"], daily[-1]["date"][:10]
+        else:
+            n, date = data["statistics"]["total"]["followers"], today
+        return int(n), date, f"https://socialblade.com/instagram/user/{handle.lstrip('@').lower()}"
+
+
+def fetch_instastatistics(handle, today):
     h = handle.lstrip("@")
     page = get(f"https://instastatistics.com/{h}")
     nums = re.findall(r"\b\d{1,3}(?:,\d{3})+\b", page)

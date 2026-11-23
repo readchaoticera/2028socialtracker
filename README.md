@@ -18,7 +18,7 @@ Live dashboard (Artifact): https://claude.ai/artifact/2fFdChcBnZH9bSjYkD2EzD
 ## Weekly update
 
 ```bash
-python3 scripts/fetch_counts.py                      # X, TikTok, Instagram fetched automatically
+python3 scripts/fetch_counts.py                      # all five platforms fetched automatically
 python3 scripts/build.py
 ```
 
@@ -46,5 +46,5 @@ Add an entry to `data/candidates.json` with their handle on each platform, then 
 - X: `api.fxtwitter.com/<handle>` (public mirror of the X profile, exact count)
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
 - YouTube: the channel page header (rounded by YouTube, marked approximate)
-- Instagram: instastatistics.com where it tracks the account (Harris, AOC, Newsom, Ossoff); otherwise manual entry with `--set`
+- Instagram: instastatistics.com when it tracks the account and is at most 7 days behind (free); otherwise Social Blade (1 credit)
 - Facebook: Social Blade Business API (page likes, dated daily; 1 credit per page). Pages Social Blade has stopped crawling (AOC, Shapiro, Khanna, Moore) need `--set`. Credentials come from network secrets on the 2028socialtracker environment, or `SOCIALBLADE_CLIENT_ID` / `SOCIALBLADE_TOKEN` environment variables. Never commit them.

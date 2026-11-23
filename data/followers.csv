@@ -1,23 +1,12 @@
 snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,harris,x,20928520,false,2026-11-23,https://api.fxtwitter.com/KamalaHarris,
 2026-11-23,harris,tiktok,10193632,false,2026-11-23,https://www.tiktok.com/@kamalaharris,
-2026-11-23,harris,instagram,20104682,false,2026-11-18,https://instastatistics.com/kamalaharris,
 2026-11-23,aoc,x,12629692,false,2026-11-23,https://api.fxtwitter.com/AOC,
 2026-11-23,aoc,tiktok,4099904,false,2026-11-23,https://www.tiktok.com/@aoc,
-2026-11-23,aoc,instagram,9825136,false,2026-11-22,https://instastatistics.com/aoc,
 2026-11-23,newsom,x,3145548,false,2026-11-23,https://api.fxtwitter.com/GavinNewsom,
 2026-11-23,newsom,tiktok,3134543,false,2026-11-23,https://www.tiktok.com/@gavinnewsom,
-2026-11-23,newsom,instagram,4145051,false,2026-11-05,https://instastatistics.com/gavinnewsom,
 2026-11-23,ossoff,x,1143673,false,2026-11-23,https://api.fxtwitter.com/ossoff,
 2026-11-23,ossoff,tiktok,1088420,false,2026-11-23,https://www.tiktok.com/@jon,
-2026-11-23,ossoff,instagram,1584346,false,2026-11-11,https://instastatistics.com/jonossoff,
-2026-11-23,warnock,instagram,371000,true,,https://www.instagram.com/raphaelwarnock/,Search snippet likely years old; Instagram blocks logged-out reads
-2026-11-23,kelly,instagram,835000,true,2026-11-23,https://www.instagram.com/captmarkkelly/,
-2026-11-23,buttigieg,instagram,1300000,true,,https://www.instagram.com/pete.buttigieg/,Undated search snippet
-2026-11-23,shapiro,instagram,198000,true,2026-11-23,https://www.instagram.com/joshshapiropa/,
-2026-11-23,pritzker,instagram,324000,true,,https://www.instagram.com/jbpritzker/,Undated search snippet
-2026-11-23,slotkin,instagram,140000,true,,https://www.instagram.com/elissa.slotkin/,Search snippet about two years old
-2026-11-23,emanuel,instagram,32000,true,,https://www.instagram.com/rahmemanuel/,Undated search snippet
 2026-11-23,warnock,x,1206779,false,2026-11-23,https://api.fxtwitter.com/ReverendWarnock,
 2026-11-23,warnock,tiktok,20278,false,2026-11-23,https://www.tiktok.com/@raphaelwarnock,
 2026-11-23,kelly,x,527275,false,2026-11-23,https://api.fxtwitter.com/CaptMarkKelly,
@@ -30,12 +19,6 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,pritzker,tiktok,37358,false,2026-11-23,https://www.tiktok.com/@jbpritzker,
 2026-11-23,slotkin,x,76893,false,2026-11-23,https://api.fxtwitter.com/ElissaSlotkin,
 2026-11-23,emanuel,x,212219,false,2026-11-23,https://api.fxtwitter.com/RahmEmanuel,
-2026-11-23,beshear,instagram,247000,true,,https://www.instagram.com/andybeshearky/,Undated search snippet
-2026-11-23,gallego,instagram,41000,true,,https://www.instagram.com/gallegoforaz/,Undated search snippet
-2026-11-23,booker,instagram,1110193,false,,https://www.instagram.com/corybooker/,Undated indexed profile snapshot
-2026-11-23,khanna,instagram,166000,true,,https://www.instagram.com/reprokhanna/,Undated search snippet
-2026-11-23,moore,instagram,290000,true,2025-11-23,https://www.instagram.com/iamwesmoore/,Search snippet about a year old
-2026-11-23,whitmer,instagram,427756,false,2026-04-15,https://socialveins.com/influencer/instagram/gewhitmer,
 2026-11-23,harris,youtube,858000,true,2026-11-23,https://www.youtube.com/@kamalaharris,
 2026-11-23,aoc,youtube,367000,true,2026-11-23,https://www.youtube.com/@AOC,
 2026-11-23,newsom,youtube,130000,true,2026-11-23,https://www.youtube.com/@GavinNewsom,
@@ -81,3 +64,20 @@ snapshot,candidate,platform,followers,approximate,count_date,source,note
 2026-11-23,shapiro,facebook,246969,false,,https://www.facebook.com/JoshShapiroPA/,Search snippet likely from mid-2024; Facebook requires login
 2026-11-23,khanna,facebook,375000,true,,https://www.facebook.com/RoKhannaUSA/,Undated cached snapshot; Facebook requires login
 2026-11-23,moore,facebook,219013,false,2024-07-15,https://www.facebook.com/iamwesmoore/,Cached snapshot from about mid-2024; Facebook requires login
+2026-11-23,aoc,instagram,9824380,false,2026-11-23,https://instastatistics.com/aoc,
+2026-11-23,warnock,instagram,441129,false,2026-11-23,https://socialblade.com/instagram/user/raphaelwarnock,
+2026-11-23,kelly,instagram,834893,false,2026-11-23,https://socialblade.com/instagram/user/captmarkkelly,
+2026-11-23,buttigieg,instagram,3812162,false,2026-11-23,https://socialblade.com/instagram/user/pete.buttigieg,
+2026-11-23,shapiro,instagram,197955,false,2026-11-23,https://socialblade.com/instagram/user/joshshapiropa,
+2026-11-23,pritzker,instagram,370051,false,2026-11-23,https://socialblade.com/instagram/user/jbpritzker,
+2026-11-23,slotkin,instagram,177393,false,2026-11-23,https://socialblade.com/instagram/user/elissa.slotkin,
+2026-11-23,emanuel,instagram,97043,false,2026-11-23,https://socialblade.com/instagram/user/rahmemanuel,
+2026-11-23,beshear,instagram,247560,false,2026-11-23,https://socialblade.com/instagram/user/andybeshearky,
+2026-11-23,gallego,instagram,42560,false,2026-11-23,https://socialblade.com/instagram/user/gallegoforaz,
+2026-11-23,booker,instagram,3428975,false,2026-11-23,https://socialblade.com/instagram/user/corybooker,
+2026-11-23,khanna,instagram,205659,false,2026-11-23,https://socialblade.com/instagram/user/reprokhanna,
+2026-11-23,moore,instagram,348570,false,2026-11-23,https://socialblade.com/instagram/user/iamwesmoore,
+2026-11-23,whitmer,instagram,416776,false,2026-11-23,https://socialblade.com/instagram/user/gewhitmer,
+2026-11-23,harris,instagram,20104682,false,2026-11-18,https://instastatistics.com/kamalaharris,
+2026-11-23,newsom,instagram,4144074,false,2026-11-23,https://socialblade.com/instagram/user/gavinnewsom,
+2026-11-23,ossoff,instagram,1615780,false,2026-11-23,https://socialblade.com/instagram/user/jonossoff,
