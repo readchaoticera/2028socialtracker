@@ -48,6 +48,7 @@ For their profile picture on the ranking chart, run `python3 scripts/fetch_avata
 
 - X: `api.fxtwitter.com/<handle>` (public mirror of the X profile, exact count)
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
+- Bluesky (Democrats only): public.api.bsky.app, exact count, free
 - YouTube: the channel page header (rounded by YouTube, marked approximate)
 - Instagram: instastatistics.com when it tracks the account and is at most 7 days behind (free); otherwise Social Blade (1 credit)
 - Facebook: the larger of Social Blade page likes (dated daily; 1 credit per page) and the latest hand-checked follower count in `data/facebook_followers.csv`. To add a follower count, append a row: `candidate,followers,date,source`. Credentials come from the `SOCIALBLADE_CLIENT_ID` and `SOCIALBLADE_TOKEN` environment variables on the 2028socialtracker cloud environment. Never commit them.

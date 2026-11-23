@@ -53,7 +53,7 @@ def main():
     out.write_text(html)  # Artifact version: the Artifact host adds the document skeleton
 
     # GitHub Pages version: a complete standalone document in docs/
-    desc = ("Weekly follower counts on X, TikTok, Facebook, Instagram and YouTube for the likely "
+    desc = ("Weekly follower counts on X, TikTok, Facebook, Instagram, YouTube and Bluesky for the likely "
             "2028 Democratic and Republican presidential contenders. From Chaotic Era.")
     head = (
         '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'

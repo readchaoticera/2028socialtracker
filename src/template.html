@@ -289,7 +289,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <h1>Who has the biggest social media audience for 2028?</h1>
     <p class="dek">
       Follower counts for the Democrats and Republicans most often mentioned as 2028 presidential
-      contenders, across X, TikTok, Facebook, Instagram and YouTube. Updated weekly.
+      contenders, across X, TikTok, Facebook, Instagram and YouTube, plus Bluesky for Democrats. Updated weekly.
     </p>
     <p class="asof" id="asof"></p>
   </section>
@@ -361,12 +361,14 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
 const DATA = /*__DATA__*/null;
 
 (function () {
-  const PLATFORMS = DATA.platforms;               // [{id,label}]
+  // A platform may be limited to one party (e.g. Bluesky for Democrats): {id, label, parties?}
+  const platformsFor = pt => DATA.platforms.filter(p => !p.parties || p.parties.includes(pt));
   const ALL = DATA.candidates;                    // [{id,name,role,party,accounts:{x:{handle,url,status}}}]
   const PARTIES = [{ id: "D", label: "Democrats", hash: "democrats" }, { id: "R", label: "Republicans", hash: "republicans" }];
   const partyFromHash = () => (PARTIES.find(p => "#" + p.hash === location.hash) || PARTIES[0]).id;
   let party = partyFromHash();
   let CANDS = ALL.filter(c => (c.party || "D") === party);
+  let PLATFORMS = platformsFor(party);
   const SNAPS = DATA.snapshots;                   // [{date, counts:{cid:{pid:{followers,approximate}}}}] oldest→newest
   const latest = SNAPS[SNAPS.length - 1];
   const prev = SNAPS.length > 1 ? SNAPS[SNAPS.length - 2] : null;
@@ -464,7 +466,7 @@ const DATA = /*__DATA__*/null;
       .sort((a, b) => (b.v || 0) - (a.v || 0));
     const max = Math.max(1, ...rows.map(r => r.v || 0));
     // platform mix inside the combined bar: one hue per person, platform shown by opacity steps
-    const mixOpacity = [1, 0.76, 0.56, 0.38, 0.22];
+    const mixOpacity = [1, 0.78, 0.6, 0.44, 0.3, 0.18];
     document.getElementById("bars").innerHTML = rows.map((r, k) => {
       let barHtml;
       if (!r.has) barHtml = `<span class="bar-none">No account</span>`;
@@ -669,6 +671,9 @@ const DATA = /*__DATA__*/null;
   function setParty(id) {
     party = id;
     CANDS = ALL.filter(c => (c.party || "D") === party);
+    PLATFORMS = platformsFor(party);
+    if (platform !== "all" && !PLATFORMS.some(p => p.id === platform)) platform = "all";
+    if (sortKey !== "all" && sortKey !== "name" && !PLATFORMS.some(p => p.id === sortKey)) { sortKey = "all"; sortDir = -1; }
     focus = null;
     renderAll();
   }

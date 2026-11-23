@@ -7,6 +7,7 @@
   python3 scripts/fetch_counts.py --dry-run           # print, don't write
 
 Automatic sources (public, no login):
+  Bluesky    public.api.bsky.app (public API)      exact count
   YouTube    youtube.com/@<handle>                 subscribers, rounded by YouTube (marked approximate)
   X          api.fxtwitter.com/<handle>            exact count
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
@@ -18,7 +19,7 @@ Social Blade credentials come from SOCIALBLADE_CLIENT_ID / SOCIALBLADE_TOKEN, or
 on the environment. Values passed with --set always win.
 Any fetch that fails is carried forward the same way and reported at the end.
 """
-import argparse, csv, datetime as dt, json, re, sys, time, urllib.request
+import argparse, csv, datetime as dt, json, re, sys, time, urllib.parse, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -160,7 +161,13 @@ def fetch_facebook(handle, today, cid=None):
     raise sb_error
 
 
-FETCHERS = {"facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
+def fetch_bluesky(handle, today):
+    h = handle.lstrip("@")
+    d = json.loads(get("https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=" + urllib.parse.quote(h)))
+    return int(d["followersCount"]), today, f"https://bsky.app/profile/{h}"
+
+
+FETCHERS = {"bluesky": fetch_bluesky, "facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
 
 
 def main():
@@ -208,6 +215,8 @@ def main():
         for p in cfg["platforms"]:
             if a.platform and p["id"] not in a.platform:
                 continue
+            if p.get("parties") and c.get("party") not in p["parties"]:
+                continue  # platform not tracked for this party
             key = (c["id"], p["id"])
             acct = c["accounts"].get(p["id"], {})
             if acct.get("status") == "none" or key in have:
