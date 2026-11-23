@@ -259,7 +259,6 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
 .down { color: var(--down); }
 .flat { color: var(--ink-soft); }
 .na { color: var(--ink-faint); font-style: italic; }
-.approx { color: var(--ink-soft); font-weight: 500; }
 
 /* ---------- Methodology ---------- */
 .methodology {
@@ -341,7 +340,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
   <h2 class="section-head">Raw Data by Platform</h2>
   <p class="section-sub">
     Latest count for each account, with the change since the previous weekly snapshot underneath.
-    Click a column header to sort. <span class="approx">≈</span> marks a figure rounded by the platform (for example “21M”).
+    Click a column header to sort.
   </p>
   <div class="table-wrap">
     <table id="tbl">
@@ -354,7 +353,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <h2>How this is counted</h2>
     <ul>
       <li><strong>One account per person per platform.</strong> We track each politician’s personal or political account. Official government accounts, such as a governor’s, senator’s or representative’s office account, are never counted. Where a second account is prominent it is named in the notes below.</li>
-      <li><strong>Followers, not engagement.</strong> Facebook figures are the larger of the page’s likes (from Social Blade) and its followers (checked by hand). YouTube figures are channel subscribers. TikTok, Instagram, YouTube and often Facebook display rounded figures (“5.2M”); those are recorded as shown and marked <span class="approx">≈</span>. Small weekly changes on rounded figures can be noise.</li>
+      <li><strong>Followers, not engagement.</strong> Facebook figures are the larger of the page’s likes (from Social Blade) and its followers (checked by hand). YouTube figures are channel subscribers. TikTok, Instagram, YouTube and often Facebook display rounded figures (“5.2M”); those are recorded as shown. Small weekly changes on rounded figures can be noise.</li>
       <li><strong>“No account”</strong> means we found no active personal account on that platform. It counts as zero in the combined total.</li>
       <li><strong>Combined audience obviously double-counts some people.</strong> Many people may follow a politician on multiple platforms.</li>
       <li><strong>Snapshots are weekly.</strong> Counts are collected once a week: X and TikTok from public profile data (exact counts), YouTube from the channel page (rounded by YouTube), and Facebook and Instagram from the Social Blade and Instastatistics trackers. The source for every figure is kept in the data file.</li>
@@ -428,10 +427,6 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
     const c = cell(snap, cid, pid);
     return c ? c.followers : null;
   }
-  function approx(snap, cid, pid) {
-    if (pid === "all") return PLATFORMS.some(p => { const c = cell(snap, cid, p.id); return c && c.approximate; });
-    const c = cell(snap, cid, pid); return !!(c && c.approximate);
-  }
   function hasAccount(cid, pid) {
     if (pid === "all") return true;
     const a = byId[cid].accounts[pid];
@@ -498,7 +493,7 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
           }).join("");
         } else segs = `<span class="bar-seg" style="width:100%;background:var(--mark)"></span>`;
         barHtml = `<span class="bar" style="width:calc(${w}% - ${w > 70 ? 80 : 0}px)" title="${fmtFull(r.v)}">${segs}</span>
-          <span class="bar-val">${approx(latest, r.c.id, platform) ? '<span class="approx">≈</span>' : ""}${fmtShort(r.v)}${r.d != null ? `<span class="d ${dcls(r.d)}">${fmtDelta(r.d, true)}</span>` : ""}</span>`;
+          <span class="bar-val">${fmtShort(r.v)}${r.d != null ? `<span class="d ${dcls(r.d)}">${fmtDelta(r.d, true)}</span>` : ""}</span>`;
       }
       return `<div class="bar-row"><div class="bar-name"><span class="bar-rank">${r.v != null ? k + 1 : ""}</span>${avatar(r.c)}<span class="who">${nameLink(r.c)}<small>${esc(r.c.role)}</small></span></div><div class="bar-track">${barHtml}</div></div>`;
     }).join("");
@@ -659,11 +654,11 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
         const shown = acct.handle && /^\d+$/.test(acct.handle) ? "Facebook page" : acct.handle;
         const handle = acct.handle ? (acct.url ? `<a class="handle" href="${esc(acct.url)}" target="_blank" rel="noopener">${esc(shown)}</a>` : `<span class="handle">${esc(shown)}</span>`) : "";
         const cd = cell(latest, c.id, p.id), st = staleLabel(cd);
-        return `<td class="num"><span class="cnt">${approx(latest, c.id, p.id) ? '<span class="approx">≈</span>' : ""}${v == null ? '<span class="na">No data</span>' : fmtFull(v)}</span>${d != null ? `<span class="chg ${dcls(d)}">${fmtDelta(d)}</span>` : ""}${st ? `<span class="stale" title="${esc(cd.note || "")}">${st}</span>` : ""}${handle}</td>`;
+        return `<td class="num"><span class="cnt">${v == null ? '<span class="na">No data</span>' : fmtFull(v)}</span>${d != null ? `<span class="chg ${dcls(d)}">${fmtDelta(d)}</span>` : ""}${st ? `<span class="stale" title="${esc(cd.note || "")}">${st}</span>` : ""}${handle}</td>`;
       }).join("");
       const tv = val(latest, c.id, "all"), td = delta(c.id, "all");
       return `<tr><td><div class="cand"><span class="rank">${rankOf(c.id)}</span><div><div class="cand-name">${esc(c.name)}</div><div class="cand-role">${esc(c.role)}</div></div></div></td>${tds}
-        <td class="num total"><span class="cnt">${approx(latest, c.id, "all") ? '<span class="approx">≈</span>' : ""}${fmtFull(tv)}</span>${td != null ? `<span class="chg ${dcls(td)}">${fmtDelta(td)}</span>` : ""}</td></tr>`;
+        <td class="num total"><span class="cnt">${fmtFull(tv)}</span>${td != null ? `<span class="chg ${dcls(td)}">${fmtDelta(td)}</span>` : ""}</td></tr>`;
     }).join("");
   }
 
