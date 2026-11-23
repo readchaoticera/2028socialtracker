@@ -47,4 +47,11 @@ Add an entry to `data/candidates.json` with their handle on each platform, then 
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
 - YouTube: the channel page header (rounded by YouTube, marked approximate)
 - Instagram: instastatistics.com when it tracks the account and is at most 7 days behind (free); otherwise Social Blade (1 credit)
-- Facebook: Social Blade Business API (page likes, dated daily; 1 credit per page). Pages Social Blade has stopped crawling (AOC, Shapiro, Khanna, Moore) need `--set`. Credentials come from network secrets on the 2028socialtracker environment, or `SOCIALBLADE_CLIENT_ID` / `SOCIALBLADE_TOKEN` environment variables. Never commit them.
+- Facebook: Social Blade Business API (page likes, dated daily; 1 credit per page). Pages Social Blade has stopped crawling (AOC, Shapiro, Khanna, Moore) need `--set`. Credentials come from the `SOCIALBLADE_CLIENT_ID` and `SOCIALBLADE_TOKEN` environment variables on the 2028socialtracker cloud environment. Never commit them.
+
+## Automatic weekly update
+
+A scheduled Claude task runs every Monday at 7:40am Eastern on the `2028socialtracker` cloud environment.
+It runs `fetch_counts.py` and `build.py`, commits, pushes, and republishes the Artifact, then sends a push
+notification with the top five, the biggest weekly gains, anything it could not refresh, and Social Blade
+credits left. A normal week uses about 25–30 credits.
