@@ -92,7 +92,17 @@ a { color: inherit; }
 .subscribe-btn:hover { background: var(--accent-dark); }
 
 main.wrap { padding-block: 0 64px; }
-.hero + .controls { border-top: 0; padding-top: 0; }
+.party { display: flex; gap: 0; margin: 0 0 22px; border-bottom: 1px solid var(--line); }
+.party-btn {
+  border: 0; background: transparent; cursor: pointer; font-family: var(--serif); font-weight: 700;
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--ink-faint); padding: 6px 4px 12px; margin-right: 28px;
+  border-bottom: 3px solid transparent; margin-bottom: -1px; display: inline-flex; align-items: baseline; gap: 8px;
+}
+.party-btn:hover { color: var(--ink); }
+.party-btn[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.party-btn .ct { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; color: var(--ink-soft); }
+.party-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.party + .controls { border-top: 0; padding-top: 0; }
 
 /* ---------- Hero ---------- */
 .hero { padding: 52px 0 26px; }
@@ -266,12 +276,14 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <p class="kicker">2028 Watch · Social audience tracker</p>
     <h1>Who has the biggest social media audience for 2028?</h1>
     <p class="dek">
-      Follower counts for the Democrats most often mentioned as 2028 presidential contenders,
-      across X, TikTok, Facebook, Instagram and YouTube. Updated weekly.
+      Follower counts for the Democrats and Republicans most often mentioned as 2028 presidential
+      contenders, across X, TikTok, Facebook, Instagram and YouTube. Updated weekly.
     </p>
     <p class="asof" id="asof"></p>
   </section>
 
+
+  <div class="party" id="party" role="group" aria-label="Party"></div>
 
   <div class="controls">
     <div class="tabs" id="tabs" role="group" aria-label="Platform"></div>
@@ -338,11 +350,15 @@ const DATA = /*__DATA__*/null;
 
 (function () {
   const PLATFORMS = DATA.platforms;               // [{id,label}]
-  const CANDS = DATA.candidates;                  // [{id,name,role,accounts:{x:{handle,url,status}}}]
+  const ALL = DATA.candidates;                    // [{id,name,role,party,accounts:{x:{handle,url,status}}}]
+  const PARTIES = [{ id: "D", label: "Democrats", hash: "democrats" }, { id: "R", label: "Republicans", hash: "republicans" }];
+  const partyFromHash = () => (PARTIES.find(p => "#" + p.hash === location.hash) || PARTIES[0]).id;
+  let party = partyFromHash();
+  let CANDS = ALL.filter(c => (c.party || "D") === party);
   const SNAPS = DATA.snapshots;                   // [{date, counts:{cid:{pid:{followers,approximate}}}}] oldest→newest
   const latest = SNAPS[SNAPS.length - 1];
   const prev = SNAPS.length > 1 ? SNAPS[SNAPS.length - 2] : null;
-  const byId = Object.fromEntries(CANDS.map(c => [c.id, c]));
+  const byId = Object.fromEntries(ALL.map(c => [c.id, c]));
   let platform = "all";
 
   // ---------- helpers ----------
@@ -429,7 +445,7 @@ const DATA = /*__DATA__*/null;
   }
   function renderBars() {
     const label = platform === "all" ? "combined followers" : `${PLATFORMS.find(p => p.id === platform).label} followers`;
-    document.getElementById("rank-sub").textContent = `By ${label}, ${fmtDate(latest.date)}` + (prev ? ". Change is since last week." : ".");
+    document.getElementById("rank-sub").textContent = `${PARTIES.find(p => p.id === party).label}, by ${label}, ${fmtDate(latest.date)}` + (prev ? ". Change is since last week." : ".");
     const rows = CANDS.map(c => ({ c, v: val(latest, c.id, platform), d: delta(c.id, platform), has: hasAccount(c.id, platform) }))
       .sort((a, b) => (b.v || 0) - (a.v || 0));
     const max = Math.max(1, ...rows.map(r => r.v || 0));
@@ -619,15 +635,33 @@ const DATA = /*__DATA__*/null;
   }
 
   // ---------- notes ----------
-  const notes = DATA.notes || [];
-  if (notes.length) {
+  function renderNotes() {
+    const notes = (DATA.notes || []).map(n => typeof n === "string" ? { party: "D", text: n } : n).filter(n => n.party === party);
     const el = document.getElementById("notes");
-    el.hidden = false;
-    el.innerHTML = "<b>Account notes</b><ul>" + notes.map(n => `<li>${esc(n)}</li>`).join("") + "</ul>";
+    el.hidden = !notes.length;
+    el.innerHTML = "<b>Account notes</b><ul>" + notes.map(n => `<li>${esc(n.text)}</li>`).join("") + "</ul>";
   }
+
+  // ---------- party switch ----------
+  function renderParty() {
+    document.getElementById("party").innerHTML = PARTIES.map(p =>
+      `<button class="party-btn" type="button" data-party="${p.id}" aria-pressed="${p.id === party}">${p.label}<span class="ct">${ALL.filter(c => (c.party || "D") === p.id).length}</span></button>`).join("");
+    document.querySelectorAll("#party .party-btn").forEach(b => b.addEventListener("click", () => {
+      const p = PARTIES.find(x => x.id === b.dataset.party);
+      if (location.hash !== "#" + p.hash) location.hash = p.hash; else setParty(p.id);
+    }));
+  }
+  function setParty(id) {
+    party = id;
+    CANDS = ALL.filter(c => (c.party || "D") === party);
+    focus = null;
+    renderAll();
+  }
+  window.addEventListener("hashchange", () => { const id = partyFromHash(); if (id !== party) setParty(id); else renderParty(); });
+  function renderAll() { renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); renderNotes(); }
   document.getElementById("footnote").textContent =
     `Latest counts collected ${fmtDate(latest.date)}. Per-account sources are recorded in data/followers.csv.`;
 
-  renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable();
+  renderAll();
 })();
 </script>

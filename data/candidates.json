@@ -26,6 +26,7 @@
       "id": "harris",
       "name": "Kamala Harris",
       "role": "Former Vice President",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@KamalaHarris",
@@ -53,6 +54,7 @@
       "id": "aoc",
       "name": "Alexandria Ocasio-Cortez",
       "role": "U.S. Representative, New York",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@AOC",
@@ -80,6 +82,7 @@
       "id": "newsom",
       "name": "Gavin Newsom",
       "role": "Governor of California",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@GavinNewsom",
@@ -107,6 +110,7 @@
       "id": "ossoff",
       "name": "Jon Ossoff",
       "role": "U.S. Senator, Georgia",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@ossoff",
@@ -134,6 +138,7 @@
       "id": "warnock",
       "name": "Raphael Warnock",
       "role": "U.S. Senator, Georgia",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@ReverendWarnock",
@@ -161,6 +166,7 @@
       "id": "kelly",
       "name": "Mark Kelly",
       "role": "U.S. Senator, Arizona",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@CaptMarkKelly",
@@ -188,6 +194,7 @@
       "id": "buttigieg",
       "name": "Pete Buttigieg",
       "role": "Former Transportation Secretary",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@PeteButtigieg",
@@ -215,6 +222,7 @@
       "id": "shapiro",
       "name": "Josh Shapiro",
       "role": "Governor of Pennsylvania",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@JoshShapiroPA",
@@ -242,6 +250,7 @@
       "id": "pritzker",
       "name": "JB Pritzker",
       "role": "Governor of Illinois",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@JBPritzker",
@@ -269,6 +278,7 @@
       "id": "slotkin",
       "name": "Elissa Slotkin",
       "role": "U.S. Senator, Michigan",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@ElissaSlotkin",
@@ -296,6 +306,7 @@
       "id": "emanuel",
       "name": "Rahm Emanuel",
       "role": "Former Ambassador to Japan",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@RahmEmanuel",
@@ -321,6 +332,7 @@
       "id": "beshear",
       "name": "Andy Beshear",
       "role": "Governor of Kentucky",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@AndyBeshearKY",
@@ -348,6 +360,7 @@
       "id": "gallego",
       "name": "Ruben Gallego",
       "role": "U.S. Senator, Arizona",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@RubenGallego",
@@ -375,6 +388,7 @@
       "id": "booker",
       "name": "Cory Booker",
       "role": "U.S. Senator, New Jersey",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@CoryBooker",
@@ -402,6 +416,7 @@
       "id": "khanna",
       "name": "Ro Khanna",
       "role": "U.S. Representative, California",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@RoKhanna",
@@ -429,6 +444,7 @@
       "id": "moore",
       "name": "Wes Moore",
       "role": "Governor of Maryland",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@iamwesmoore",
@@ -456,6 +472,7 @@
       "id": "whitmer",
       "name": "Gretchen Whitmer",
       "role": "Governor of Michigan",
+      "party": "D",
       "accounts": {
         "x": {
           "handle": "@gretchenwhitmer",
@@ -481,15 +498,45 @@
     }
   ],
   "notes": [
-    "Ocasio-Cortez: office accounts (@RepAOC on X and Instagram) and a second TikTok, @aocinthehouse, are not counted.",
-    "Newsom: @GovPressOffice and @CAgovernor on X are not counted.",
-    "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted.",
-    "Warnock: the verified TikTok @raphaelwarnock matches his Instagram handle but is not linked from any official site. Office accounts (@SenatorWarnock) are not counted.",
-    "Kelly: office accounts (@SenMarkKelly) are not counted.",
-    "Shapiro, Pritzker and Slotkin: their governor’s or Senate office accounts are larger on several platforms (for example @GovernorShapiro and @GovPritzker on X) and are not counted.",
-    "Emanuel has no TikTok account or YouTube channel. Slotkin’s TikTok is her campaign account, @elissaslotkinhq (“Team Slotkin”).",
-    "Newsom: his podcast channel, This is Gavin Newsom, is not counted. Ossoff: his YouTube handle is @SenJonOssoff, but it is his campaign channel.",
-    "Booker, Beshear, Gallego, Moore and Whitmer: office pages (for example @senbooker on TikTok and GovGretchenWhitmer on Facebook) are not counted.",
-    "Khanna: his larger Instagram, @reprokhanna, is his House office account and is not counted. Gallego: his TikTok and YouTube are campaign accounts that now display “Senator” in their names."
+    {
+      "party": "D",
+      "text": "Ocasio-Cortez: office accounts (@RepAOC on X and Instagram) and a second TikTok, @aocinthehouse, are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Newsom: @GovPressOffice and @CAgovernor on X are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Warnock: the verified TikTok @raphaelwarnock matches his Instagram handle but is not linked from any official site. Office accounts (@SenatorWarnock) are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Kelly: office accounts (@SenMarkKelly) are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Shapiro, Pritzker and Slotkin: their governor’s or Senate office accounts are larger on several platforms (for example @GovernorShapiro and @GovPritzker on X) and are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Emanuel has no TikTok account or YouTube channel. Slotkin’s TikTok is her campaign account, @elissaslotkinhq (“Team Slotkin”)."
+    },
+    {
+      "party": "D",
+      "text": "Newsom: his podcast channel, This is Gavin Newsom, is not counted. Ossoff: his YouTube handle is @SenJonOssoff, but it is his campaign channel."
+    },
+    {
+      "party": "D",
+      "text": "Booker, Beshear, Gallego, Moore and Whitmer: office pages (for example @senbooker on TikTok and GovGretchenWhitmer on Facebook) are not counted."
+    },
+    {
+      "party": "D",
+      "text": "Khanna: his larger Instagram, @reprokhanna, is his House office account and is not counted. Gallego: his TikTok and YouTube are campaign accounts that now display “Senator” in their names."
+    }
   ]
 }
