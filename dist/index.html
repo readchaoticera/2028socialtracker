@@ -458,7 +458,8 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
   }
 
   // ---------- header ----------
-  document.getElementById("asof").innerHTML =
+  const asofEl = document.getElementById("asof");  // absent in the embed build (no headline block)
+  if (asofEl) asofEl.innerHTML =
     `Latest snapshot <b>${fmtDate(latest.date)}</b> · ` + (SNAPS.length === 1 ? "First weekly snapshot" : `${SNAPS.length} weekly snapshots since ${fmtDate(SNAPS[0].date)}`);
 
   // ---------- tabs ----------

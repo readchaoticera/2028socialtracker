@@ -72,11 +72,11 @@ def main():
     pages.write_text(head + html + "\n</body>\n</html>\n")
     (ROOT / "docs/.nojekyll").write_text("")
 
-    # Embed version for an iframe inside a paywalled beehiiv post: no masthead, subscribe bar or footer
+    # Embed version for an iframe inside a paywalled beehiiv post: no masthead, headline, subscribe bar or footer
     # (the post supplies those), not indexed by search engines, at a hard-to-guess path.
     import re as _re
     emb = html
-    for pat in (r'<header class="masthead">.*?</header>', r'<aside class="cta".*?</aside>', r'<footer class="site-footer">.*?</footer>'):
+    for pat in (r'<header class="masthead">.*?</header>', r'<section class="hero">.*?</section>', r'<aside class="cta".*?</aside>', r'<footer class="site-footer">.*?</footer>'):
         emb, n = _re.subn(pat, "", emb, count=1, flags=_re.S)
         assert n == 1, f"embed build: pattern not found: {pat}"
     emb_head = head.replace('<meta charset="utf-8">', '<meta charset="utf-8">\n<meta name="robots" content="noindex, nofollow">')

@@ -311,15 +311,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
 
 
 <main class="wrap">
-  <section class="hero">
-    <p class="kicker">2028 Watch · Social audience tracker</p>
-    <h1>Who has the biggest social media audience for 2028?</h1>
-    <p class="dek">
-      Follower counts for the Democrats and Republicans most often mentioned as 2028 presidential
-      contenders, across X, TikTok, Facebook, Instagram, YouTube and Threads, plus Bluesky for Democrats. Updated weekly.
-    </p>
-    <p class="asof" id="asof"></p>
-  </section>
+  
 
 
   
@@ -456,7 +448,8 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
   }
 
   // ---------- header ----------
-  document.getElementById("asof").innerHTML =
+  const asofEl = document.getElementById("asof");  // absent in the embed build (no headline block)
+  if (asofEl) asofEl.innerHTML =
     `Latest snapshot <b>${fmtDate(latest.date)}</b> · ` + (SNAPS.length === 1 ? "First weekly snapshot" : `${SNAPS.length} weekly snapshots since ${fmtDate(SNAPS[0].date)}`);
 
   // ---------- tabs ----------
