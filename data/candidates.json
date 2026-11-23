@@ -495,6 +495,143 @@
           "url": "https://www.youtube.com/@gretchenwhitmermi"
         }
       }
+    },
+    {
+      "id": "vance",
+      "name": "JD Vance",
+      "role": "Vice President",
+      "party": "R",
+      "accounts": {
+        "x": {
+          "handle": "@JDVance",
+          "url": "https://x.com/JDVance"
+        },
+        "tiktok": {
+          "handle": "@jd",
+          "url": "https://www.tiktok.com/@jd"
+        },
+        "facebook": {
+          "handle": "100070055152736",
+          "url": "https://www.facebook.com/profile.php?id=100070055152736"
+        },
+        "instagram": {
+          "handle": "@jdvance",
+          "url": "https://www.instagram.com/jdvance/"
+        },
+        "youtube": {
+          "status": "none"
+        }
+      }
+    },
+    {
+      "id": "cruz",
+      "name": "Ted Cruz",
+      "role": "U.S. Senator, Texas",
+      "party": "R",
+      "accounts": {
+        "x": {
+          "handle": "@tedcruz",
+          "url": "https://x.com/tedcruz"
+        },
+        "tiktok": {
+          "handle": "@tedcruz",
+          "url": "https://www.tiktok.com/@tedcruz"
+        },
+        "facebook": {
+          "handle": "tedcruzpage",
+          "url": "https://www.facebook.com/tedcruzpage"
+        },
+        "instagram": {
+          "handle": "@tedcruz",
+          "url": "https://www.instagram.com/tedcruz/"
+        },
+        "youtube": {
+          "handle": "@TedCruzChannel",
+          "url": "https://www.youtube.com/@TedCruzChannel"
+        }
+      }
+    },
+    {
+      "id": "desantis",
+      "name": "Ron DeSantis",
+      "role": "Governor of Florida",
+      "party": "R",
+      "accounts": {
+        "x": {
+          "handle": "@RonDeSantis",
+          "url": "https://x.com/RonDeSantis"
+        },
+        "tiktok": {
+          "status": "none"
+        },
+        "facebook": {
+          "handle": "RonDeSantis",
+          "url": "https://www.facebook.com/RonDeSantis"
+        },
+        "instagram": {
+          "handle": "@rondesantis",
+          "url": "https://www.instagram.com/rondesantis/"
+        },
+        "youtube": {
+          "handle": "@RonDeSantis",
+          "url": "https://www.youtube.com/@RonDeSantis"
+        }
+      }
+    },
+    {
+      "id": "rubio",
+      "name": "Marco Rubio",
+      "role": "Secretary of State",
+      "party": "R",
+      "accounts": {
+        "x": {
+          "handle": "@marcorubio",
+          "url": "https://x.com/marcorubio"
+        },
+        "tiktok": {
+          "status": "none"
+        },
+        "facebook": {
+          "handle": "MarcoRubio",
+          "url": "https://www.facebook.com/MarcoRubio"
+        },
+        "instagram": {
+          "handle": "@marcorubio",
+          "url": "https://www.instagram.com/marcorubio/"
+        },
+        "youtube": {
+          "handle": "@MarcoRubio",
+          "url": "https://www.youtube.com/@MarcoRubio"
+        }
+      }
+    },
+    {
+      "id": "carlson",
+      "name": "Tucker Carlson",
+      "role": "Commentator, Tucker Carlson Network",
+      "party": "R",
+      "accounts": {
+        "x": {
+          "handle": "@TuckerCarlson",
+          "url": "https://x.com/TuckerCarlson"
+        },
+        "tiktok": {
+          "handle": "@tuckercarlson",
+          "url": "https://www.tiktok.com/@tuckercarlson"
+        },
+        "facebook": {
+          "handle": "210598158304",
+          "url": "https://www.facebook.com/profile.php?id=210598158304"
+        },
+        "instagram": {
+          "handle": "@tuckercarlson",
+          "url": "https://www.instagram.com/tuckercarlson/"
+        },
+        "youtube": {
+          "handle": "@TuckerCarlson",
+          "url": "https://www.youtube.com/@TuckerCarlson"
+        }
+      }
     }
   ],
   "notes": [
@@ -537,6 +674,26 @@
     {
       "party": "D",
       "text": "Khanna: his larger Instagram, @reprokhanna, is his House office account and is not counted. Gallego: his TikTok and YouTube are campaign accounts that now display “Senator” in their names."
+    },
+    {
+      "party": "R",
+      "text": "Vance: office accounts (@VP and its Facebook, Instagram and YouTube equivalents) are not counted. His TikTok handle is @jd. He has no personal YouTube channel."
+    },
+    {
+      "party": "R",
+      "text": "Cruz: Senate office accounts (@SenTedCruz) are not counted. His podcast channel, Verdict with Ted Cruz, is larger than @TedCruzChannel and is not counted."
+    },
+    {
+      "party": "R",
+      "text": "DeSantis: governor’s office accounts (@GovRonDeSantis) are not counted. He has no TikTok account."
+    },
+    {
+      "party": "R",
+      "text": "Rubio: State Department and former Senate office accounts (@SecRubio) are not counted. He has no TikTok account, and his YouTube channel has been dormant since 2022."
+    },
+    {
+      "party": "R",
+      "text": "Carlson: separate Tucker Carlson Network accounts on X, TikTok and Facebook are not counted."
     }
   ]
 }
