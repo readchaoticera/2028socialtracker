@@ -11,8 +11,9 @@ Automatic sources (public, no login):
   X          api.fxtwitter.com/<handle>            exact count
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
   Instagram  instastatistics.com/<handle>          third-party tracker, usually a few days old
-Facebook hides counts from logged-out visitors, so it is never fetched: pass it with --set,
-or the previous figure is carried forward with its original date (the dashboard tags it as dated).
+  Facebook   Social Blade Business API             page likes, dated daily (1 credit per page)
+Social Blade credentials come from SOCIALBLADE_CLIENT_ID / SOCIALBLADE_TOKEN, or from network secrets
+on the environment. Values passed with --set always win.
 Any fetch that fails is carried forward the same way and reported at the end.
 """
 import argparse, csv, datetime as dt, json, re, sys, time, urllib.request
@@ -81,7 +82,38 @@ def fetch_youtube(handle, today):
     return n, today, f"https://www.youtube.com/@{h}", rounded
 
 
-FETCHERS = {"x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
+def socialblade(platform, handle):
+    """Social Blade Business API. Credentials: SOCIALBLADE_CLIENT_ID / SOCIALBLADE_TOKEN env vars, or
+    network secrets injected by the environment's proxy. Each new lookup costs one credit."""
+    import os, urllib.parse
+    q = {"query": handle.lstrip("@")}
+    if os.environ.get("SOCIALBLADE_CLIENT_ID"):
+        q["clientid"] = os.environ["SOCIALBLADE_CLIENT_ID"]
+    if os.environ.get("SOCIALBLADE_TOKEN"):
+        q["token"] = os.environ["SOCIALBLADE_TOKEN"]
+    d = json.loads(get(f"https://matrix.sbapis.com/b/{platform}/statistics?" + urllib.parse.urlencode(q), tries=2))
+    if not d.get("status", {}).get("success"):
+        raise ValueError(f"Social Blade: {d.get('status', {}).get('error', 'request failed')}")
+    left = d.get("info", {}).get("credits", {}).get("available")
+    if left is not None:
+        CREDITS["left"] = left
+    return d["data"]
+
+
+CREDITS = {}
+
+
+def fetch_facebook(handle, today):
+    data = socialblade("facebook", handle)
+    daily = sorted(data.get("daily") or [], key=lambda r: r["date"])
+    if daily:
+        n, date = daily[-1]["likes"], daily[-1]["date"][:10]
+    else:
+        n, date = data["statistics"]["total"]["likes"], today
+    return int(n), date, f"https://socialblade.com/facebook/page/{handle.lstrip('@').lower()}"
+
+
+FETCHERS = {"facebook": fetch_facebook, "x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
 
 
 def main():
@@ -90,6 +122,9 @@ def main():
     ap.add_argument("--set", action="append", default=[], metavar="CAND.PLATFORM=N[@YYYY-MM-DD]",
                     help="manual value, e.g. aoc.facebook=2310000@2026-11-29 (date defaults to snapshot date)")
     ap.add_argument("--only", action="append", default=[], metavar="CAND", help="limit to these candidate ids")
+    ap.add_argument("--platform", action="append", default=[], metavar="P", help="limit to these platform ids")
+    ap.add_argument("--replace", action="store_true",
+                    help="re-fetch and overwrite rows that already exist in the snapshot (use with --platform/--only)")
     ap.add_argument("--fill", action="store_true",
                     help="add only the rows missing from an existing snapshot (e.g. after adding a person or platform)")
     ap.add_argument("--dry-run", action="store_true")
@@ -98,6 +133,12 @@ def main():
     cfg = json.loads((ROOT / "data/candidates.json").read_text())
     rows = list(csv.DictReader(open(CSV, newline=""))) if CSV.exists() else []
     have = {(r["candidate"], r["platform"]) for r in rows if r["snapshot"] == a.date}
+    original = list(rows)
+    in_scope = lambda cid, pid: (not a.only or cid in a.only) and (not a.platform or pid in a.platform)
+    if a.replace:
+        rows = [r for r in rows if not (r["snapshot"] == a.date and in_scope(r["candidate"], r["platform"]))]
+        have = {(r["candidate"], r["platform"]) for r in rows if r["snapshot"] == a.date}
+        a.fill = True
     if have and not a.fill:
         sys.exit(f"A snapshot dated {a.date} already exists in {CSV.name}. Use --fill to add missing rows, "
                  "edit rows by hand, or pick another --date.")
@@ -110,7 +151,7 @@ def main():
         manual[(m.group(1), m.group(2))] = (int(m.group(3).replace(",", "")), m.group(4) or a.date)
 
     last = {}
-    for r in rows:  # most recent row wins
+    for r in sorted(original, key=lambda r: r["snapshot"]):  # most recent row wins (incl. rows being replaced)
         last[(r["candidate"], r["platform"])] = r
 
     new, problems = [], []
@@ -118,6 +159,8 @@ def main():
         if a.only and c["id"] not in a.only:
             continue
         for p in cfg["platforms"]:
+            if a.platform and p["id"] not in a.platform:
+                continue
             key = (c["id"], p["id"])
             acct = c["accounts"].get(p["id"], {})
             if acct.get("status") == "none" or key in have:
@@ -148,14 +191,15 @@ def main():
 
     if problems:
         print("\nNeeds attention:", *problems, sep="\n  ")
+    if CREDITS:
+        print(f"\nSocial Blade credits left: {CREDITS['left']}")
     if a.dry_run:
         print("\n(dry run, nothing written)")
         return
-    with open(CSV, "a", newline="") as f:
+    with open(CSV, "w", newline="") as f:  # rewrite so --replace drops the old rows
         w = csv.DictWriter(f, fieldnames=FIELDS)
-        if not rows:
-            w.writeheader()
-        w.writerows(new)
+        w.writeheader()
+        w.writerows([{k: r.get(k, "") for k in FIELDS} for r in rows] + new)
     print(f"\nAppended {len(new)} rows for {a.date} to {CSV.relative_to(ROOT)}. Next: python3 scripts/build.py")
 
 

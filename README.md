@@ -47,4 +47,4 @@ Add an entry to `data/candidates.json` with their handle on each platform, then 
 - TikTok: the `followerCount` embedded in the public profile page (exact count)
 - YouTube: the channel page header (rounded by YouTube, marked approximate)
 - Instagram: instastatistics.com where it tracks the account (Harris, AOC, Newsom, Ossoff); otherwise manual entry with `--set`
-- Facebook: manual entry, cached page copies, or news reports
+- Facebook: Social Blade Business API (page likes, dated daily; 1 credit per page). Pages Social Blade has stopped crawling (AOC, Shapiro, Khanna, Moore) need `--set`. Credentials come from network secrets on the 2028socialtracker environment, or `SOCIALBLADE_CLIENT_ID` / `SOCIALBLADE_TOKEN` environment variables. Never commit them.
