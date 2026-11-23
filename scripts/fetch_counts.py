@@ -7,6 +7,7 @@
   python3 scripts/fetch_counts.py --dry-run           # print, don't write
 
 Automatic sources (public, no login):
+  YouTube    youtube.com/@<handle>                 subscribers, rounded by YouTube (marked approximate)
   X          api.fxtwitter.com/<handle>            exact count
   TikTok     tiktok.com/@<handle> embedded JSON    exact count
   Instagram  instastatistics.com/<handle>          third-party tracker, usually a few days old
@@ -64,7 +65,23 @@ def fetch_instagram(handle, today):
     return int(nums[0].replace(",", "")), count_date, f"https://instastatistics.com/{h}"
 
 
-FETCHERS = {"x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram}
+def parse_compact(t):
+    t = t.replace(",", "").strip()
+    mult = {"K": 1e3, "M": 1e6, "B": 1e9}.get(t[-1:].upper(), 1)
+    return int(round(float(t.rstrip("KMBkmb")) * mult)), mult != 1
+
+
+def fetch_youtube(handle, today):
+    h = handle.lstrip("@")
+    page = get(f"https://www.youtube.com/@{h}")
+    m = re.search(r'"content":"([\d.,]+[KMB]?) subscribers?"', page) or re.search(r'"subscriberCountText":\{"simpleText":"([\d.,]+[KMB]?) subscribers?"', page)
+    if not m:
+        raise ValueError("subscriber count not found on channel page")
+    n, rounded = parse_compact(m.group(1))
+    return n, today, f"https://www.youtube.com/@{h}", rounded
+
+
+FETCHERS = {"x": fetch_x, "tiktok": fetch_tiktok, "instagram": fetch_instagram, "youtube": fetch_youtube}
 
 
 def main():
@@ -73,13 +90,17 @@ def main():
     ap.add_argument("--set", action="append", default=[], metavar="CAND.PLATFORM=N[@YYYY-MM-DD]",
                     help="manual value, e.g. aoc.facebook=2310000@2026-11-29 (date defaults to snapshot date)")
     ap.add_argument("--only", action="append", default=[], metavar="CAND", help="limit to these candidate ids")
+    ap.add_argument("--fill", action="store_true",
+                    help="add only the rows missing from an existing snapshot (e.g. after adding a person or platform)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
     cfg = json.loads((ROOT / "data/candidates.json").read_text())
     rows = list(csv.DictReader(open(CSV, newline=""))) if CSV.exists() else []
-    if any(r["snapshot"] == a.date for r in rows):
-        sys.exit(f"A snapshot dated {a.date} already exists in {CSV.name}. Edit those rows by hand or pick another --date.")
+    have = {(r["candidate"], r["platform"]) for r in rows if r["snapshot"] == a.date}
+    if have and not a.fill:
+        sys.exit(f"A snapshot dated {a.date} already exists in {CSV.name}. Use --fill to add missing rows, "
+                 "edit rows by hand, or pick another --date.")
 
     manual = {}
     for s in a.set:
@@ -99,7 +120,7 @@ def main():
         for p in cfg["platforms"]:
             key = (c["id"], p["id"])
             acct = c["accounts"].get(p["id"], {})
-            if acct.get("status") == "none":
+            if acct.get("status") == "none" or key in have:
                 continue
             row = {"snapshot": a.date, "candidate": c["id"], "platform": p["id"], "approximate": "false", "note": ""}
             if key in manual:
@@ -107,8 +128,9 @@ def main():
                 row.update(followers=n, count_date=d, source="manual entry")
             elif p["id"] in FETCHERS:
                 try:
-                    n, d, src = FETCHERS[p["id"]](acct["handle"], a.date)
-                    row.update(followers=n, count_date=d or "", source=src)
+                    n, d, src, *rest = FETCHERS[p["id"]](acct["handle"], a.date)
+                    row.update(followers=n, count_date=d or "", source=src,
+                               approximate="true" if (rest and rest[0]) else "false")
                 except Exception as e:  # noqa: BLE001
                     problems.append(f"{c['id']}.{p['id']}: {e}")
                     row = carry(row, last.get(key), problems, key)

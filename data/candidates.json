@@ -15,6 +15,10 @@
     {
       "id": "instagram",
       "label": "Instagram"
+    },
+    {
+      "id": "youtube",
+      "label": "YouTube"
     }
   ],
   "candidates": [
@@ -112,7 +116,6 @@
     }
   ],
   "notes": [
-    "Harris: her former campaign account @KamalaHQ was rebranded “Headquarters” in February 2026 and is not counted.",
     "Ocasio-Cortez: office accounts (@RepAOC on X and Instagram) and a second TikTok, @aocinthehouse, are not counted.",
     "Newsom: @GovPressOffice and @CAgovernor on X are not counted.",
     "Ossoff: his TikTok handle is @jon. The office accounts @SenOssoff are not counted."

@@ -201,7 +201,7 @@ main.wrap { padding-block: 0 64px; }
   background: var(--paper-card); border: 1px solid var(--line); border-radius: 12px;
   box-shadow: var(--shadow); overflow-x: auto;
 }
-table { width: 100%; border-collapse: collapse; min-width: 760px; }
+table { width: 100%; border-collapse: collapse; min-width: 900px; }
 thead th {
   text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--ink-soft); font-weight: 700; padding: 11px 12px; background: var(--paper-tint);
@@ -272,7 +272,7 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     <h1>Who has the biggest social media audience for 2028?</h1>
     <p class="dek">
       Follower counts for the Democrats most often mentioned as 2028 presidential contenders,
-      across X, TikTok, Facebook and Instagram. Updated weekly.
+      across X, TikTok, Facebook, Instagram and YouTube. Updated weekly.
     </p>
     <p class="asof" id="asof"></p>
   </section>
@@ -321,8 +321,8 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
   <section class="methodology">
     <h2>How this is counted</h2>
     <ul>
-      <li><strong>One account per person per platform.</strong> We track each politician’s main personal or political account, not an office account (such as @VP or a governor’s press office) or a campaign account. Where a second account is prominent it is named in the notes below.</li>
-      <li><strong>Followers, not engagement.</strong> Facebook figures are page followers, not page likes. TikTok, Instagram and often Facebook display rounded figures above a million (“5.2M”); those are recorded as shown and marked <span class="approx">≈</span>. Small weekly changes on rounded figures can be noise.</li>
+      <li><strong>One account per person per platform.</strong> We track each politician’s main personal account, not an official/office account (such as @VP or a governor’s press office). Where a second account is prominent it is named in the notes below.</li>
+      <li><strong>Followers, not engagement.</strong> Facebook figures are page followers, not page likes. YouTube figures are channel subscribers. TikTok, Instagram, YouTube and often Facebook display rounded figures (“5.2M”); those are recorded as shown and marked <span class="approx">≈</span>. Small weekly changes on rounded figures can be noise.</li>
       <li><strong>“No account”</strong> means we found no active personal account on that platform. It counts as zero in the combined total.</li>
       <li><strong>Combined audience double-counts people.</strong> Someone who follows a politician on two platforms is counted twice. It measures reach across platforms, not unique people.</li>
       <li><strong>Facebook is the weakest number.</strong> Facebook hides follower counts from visitors who are not logged in, so its figures often come from cached copies of the page or from news reports. Any count observed more than ten days before the snapshot is tagged with the date it was observed (or “date unknown”) and is carried forward until a fresher figure is found.</li>
@@ -478,7 +478,7 @@ const DATA = /*__DATA__*/null;
       .sort((a, b) => (b.v || 0) - (a.v || 0));
     const max = Math.max(1, ...rows.map(r => r.v || 0));
     // platform mix inside the combined bar: one hue per person, platform shown by opacity steps
-    const mixOpacity = [1, 0.72, 0.5, 0.32];
+    const mixOpacity = [1, 0.76, 0.56, 0.38, 0.22];
     document.getElementById("bars").innerHTML = rows.map((r, k) => {
       let barHtml;
       if (!r.has) barHtml = `<span class="bar-none">No account</span>`;
