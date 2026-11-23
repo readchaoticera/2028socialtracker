@@ -340,18 +340,6 @@ td.total .cnt { font-family: var(--serif); font-size: 1rem; }
     </section>
   </div>
 
-  <h2 class="section-head">Raw Data by Platform</h2>
-  <p class="section-sub">
-    Latest count for each account, with the change since the previous weekly snapshot underneath.
-    Click a column header to sort.
-  </p>
-  <div class="table-wrap">
-    <table id="tbl">
-      <thead><tr id="thead-row"></tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
-  </div>
-
   <section class="methodology">
     <h2>How this is counted</h2>
     <ul>
@@ -408,13 +396,6 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
   const fmtDateShort = s => new Date(s + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
   const esc = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
 
-  // a count is "dated" when it was observed more than 10 days before the snapshot, or its date is unknown
-  function staleLabel(c) {
-    if (!c || c.followers == null) return "";
-    if (!c.count_date) return "date unknown";
-    const days = (Date.parse(latest.date) - Date.parse(c.count_date)) / 864e5;
-    return days > 10 ? "as of " + fmtDate(c.count_date) : "";
-  }
   function cell(snap, cid, pid) {
     const c = snap && snap.counts[cid] && snap.counts[cid][pid];
     return c || null;
@@ -633,40 +614,6 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
     return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
   }
 
-  // ---------- table ----------
-  let sortKey = "all", sortDir = -1;
-  function renderTable() {
-    const cols = [{ id: "name", label: "Person", num: false }, ...PLATFORMS.map(p => ({ id: p.id, label: p.label, num: true })), { id: "all", label: "Combined", num: true }];
-    document.getElementById("thead-row").innerHTML = cols.map(c =>
-      `<th class="sortable${c.num ? " num" : ""}" data-k="${c.id}" tabindex="0" aria-sort="${sortKey === c.id ? (sortDir > 0 ? "ascending" : "descending") : "none"}">${esc(c.label)}</th>`).join("");
-    document.querySelectorAll("#thead-row th").forEach(th => {
-      const go = () => { const k = th.dataset.k; if (sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = k === "name" ? 1 : -1; } renderTable(); };
-      th.addEventListener("click", go);
-      th.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
-    });
-    const order = [...CANDS].sort((a, b) => (val(latest, b.id, "all") || 0) - (val(latest, a.id, "all") || 0)).map(c => c.id);
-    const rankOf = id => order.indexOf(id) + 1;
-    const rows = [...CANDS].sort((a, b) => {
-      if (sortKey === "name") return sortDir * a.name.localeCompare(b.name);
-      return sortDir * ((val(latest, a.id, sortKey) ?? -1) - (val(latest, b.id, sortKey) ?? -1));
-    });
-    document.getElementById("tbody").innerHTML = rows.map(c => {
-      const tds = PLATFORMS.map(p => {
-        const acct = c.accounts[p.id] || {};
-        if (acct.status === "none") return `<td class="num"><span class="na">No account</span></td>`;
-        const v = val(latest, c.id, p.id), d = delta(c.id, p.id);
-        const shown = acct.handle && /^\d+$/.test(acct.handle) ? "Facebook page" : acct.handle;
-        const handle = acct.handle ? (acct.url ? `<a class="handle" href="${esc(acct.url)}" target="_blank" rel="noopener">${esc(shown)}</a>` : `<span class="handle">${esc(shown)}</span>`) : "";
-        const cd = cell(latest, c.id, p.id), st = staleLabel(cd);
-        return `<td class="num"><span class="cnt">${v == null ? '<span class="na">No data</span>' : fmtFull(v)}</span>${d != null ? `<span class="chg ${dcls(d)}">${fmtDelta(d)}</span>` : ""}${st ? `<span class="stale" title="${esc(cd.note || "")}">${st}</span>` : ""}${handle}</td>`;
-      }).join("");
-      const tv = val(latest, c.id, "all"), td = delta(c.id, "all");
-      return `<tr><td><div class="cand"><span class="rank">${rankOf(c.id)}</span><div><div class="cand-name">${esc(c.name)}</div><div class="cand-role">${esc(c.role)}</div></div></div></td>${tds}
-        <td class="num total"><span class="cnt">${fmtFull(tv)}</span>${td != null ? `<span class="chg ${dcls(td)}">${fmtDelta(td)}</span>` : ""}</td></tr>`;
-    }).join("");
-  }
-
-
   // ---------- party switch ----------
   function renderParty() {
     document.getElementById("party").innerHTML = PARTIES.map(p =>
@@ -681,12 +628,11 @@ const DATA = {"platforms":[{"id":"x","label":"X"},{"id":"tiktok","label":"TikTok
     CANDS = ALL.filter(c => (c.party || "D") === party);
     PLATFORMS = platformsFor(party);
     if (platform !== "all" && !PLATFORMS.some(p => p.id === platform)) platform = "all";
-    if (sortKey !== "all" && sortKey !== "name" && !PLATFORMS.some(p => p.id === sortKey)) { sortKey = "all"; sortDir = -1; }
     focus = null;
     renderAll();
   }
   window.addEventListener("hashchange", () => { const id = partyFromHash(); if (id !== party) setParty(id); else renderParty(); });
-  function renderAll() { document.querySelector("main").dataset.party = party; renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); renderTable(); }
+  function renderAll() { document.querySelector("main").dataset.party = party; renderParty(); renderTabs(); renderBars(); renderChips(); renderTrend(); }
   document.getElementById("footnote").textContent =
     `Latest counts collected ${fmtDate(latest.date)}. Per-account sources are recorded in data/followers.csv.`;
 
